@@ -39,7 +39,7 @@
     "href": "assignment-workflow.html#step-5-feedback-and-grading",
     "title": "Data Analytics for Finance",
     "section": "Step 5: Feedback and Grading",
-    "text": "Step 5: Feedback and Grading\n\nAfter submission, your assignment will be graded by the instructor.\nYou will receive feedback regarding your accomplished points through JupyterHub once the grading is complete.\nTo review the feedback, navigate to the assignment folder. In this folder, you will find a file named feedback.html. Open this file to see detailed feedback on your assignment. Open it by using a right-click and selecting “Open in new browser tab”. The new tab in the browser will show your feedback.\n\n\n\n\nJupytherHub Feedback\n\n\n\n\n\n\n\n\nImportantWhat to Do If You Encounter Issues?\n\n\n\n\nIf you face any technical issues while working on the assignment(s), contact me (peter@rsm.nl) via email. Make sure to provide a detailed description of the issue you are facing, so I can assist you effectively or reach out to the JupyterHub support team if necessary.\nFor questions related to the assignment content, feel free to ask during office hours."
+    "text": "Step 5: Feedback and Grading\n\nAfter submission, your assignment will be graded by the instructor.\nYou will receive feedback regarding your accomplished points through JupyterHub once the grading is complete.\nTo review the feedback, navigate to the assignment folder. In this folder, you will find a file named feedback.html. Open this file to see detailed feedback on your assignment. Open it by using a right-click and selecting “Open in new browser tab”. The new tab in the browser will show your feedback.\n\n\n\n\nJupytherHub Feedback\n\n\n\n\n\n\n\n\nImportantWhat to Do If You Encounter Issues?\n\n\n\n\nIf you face any technical issues while working on the assignment(s), contact me (peter@rsm.nl) via email. Make sure to provide a detailed description of the issue you are facing, so I can assist you effectively or reach out to the JupyterHub support team if necessary.\nFor questions related to the assignment content, feel free to ask during office hours.\n\n\n\n\n    \n    \n        \n            \n                Data Analytics for Finance\n                BM17FI · Academic Year 2025–26\n            \n            \n        \n        \n        \n            \n                Created by: Caspar David Peter\n            \n            \n                © 2026 Rotterdam School of Management"
   },
   {
     "objectID": "lectures/lecture_5.html#overview",
@@ -1426,5 +1426,131 @@
     "title": "Event Studies (CAR) and Fama–MacBeth",
     "section": "",
     "text": "https://bookdown.org/mike/data_analysis/sec-event-studies.html"
+  },
+  {
+    "objectID": "stata-cheat-sheet.html",
+    "href": "stata-cheat-sheet.html",
+    "title": "Data Analytics for Finance",
+    "section": "",
+    "text": "BM17FI · Rotterdam School of Management\n        \n        \n    \n    \n    \n        Stata Cheat Sheet"
+  },
+  {
+    "objectID": "stata-cheat-sheet.html#sec-setup",
+    "href": "stata-cheat-sheet.html#sec-setup",
+    "title": "Data Analytics for Finance",
+    "section": "Environment & Setup",
+    "text": "Environment & Setup\nCommands for preparing your Stata session before working with data.\n\n\n\nCommand\nDescription\nExample\nDocs\n\n\n\n\nclear\nRemove data (and optionally all objects) from memory\nclear all\n📖\n\n\nset more off\nDisable output pagination so results scroll continuously\nset more off\n📖\n\n\nset scheme\nSet the default appearance for all subsequent graphs\nset scheme stcolor\n📖\n\n\nset linesize\nSet the width (in characters) of the output window\nset linesize 120\n📖\n\n\npwd\nPrint the current working directory\npwd\n📖\n\n\nglobal\nDefine a global macro, accessible anywhere in your session\nglobal datadir \"$base/data\"\n📖\n\n\nlocal\nDefine a local macro, accessible only within the current context\nlocal cutoff = td(1jan2020)\n📖\n\n\nscalar\nStore a single numeric or string value\nscalar threshold = 0.05\n📖\n\n\ndisplay\nPrint text, macro values, or expressions to the console\ndisplay \"Obs: \" _N\n📖\n\n\nssc install\nInstall a user-written package from the SSC archive\nssc install estout, replace\n📖\n\n\n\n\nExample\n* Typical session setup\nclear all\nset more off\nset scheme stcolor\n\nglobal base \"`c(pwd)'\"\nglobal raw  \"$base/data/raw\"\n\ndisplay \"Working directory: $base\""
+  },
+  {
+    "objectID": "stata-cheat-sheet.html#sec-import",
+    "href": "stata-cheat-sheet.html#sec-import",
+    "title": "Data Analytics for Finance",
+    "section": "Data Import & Export",
+    "text": "Data Import & Export\nCommands for reading data into Stata and saving results to disk.\n\n\n\nCommand\nDescription\nExample\nDocs\n\n\n\n\nimport delimited\nImport a CSV (or other delimited) file\nimport delimited \"$raw/sales.csv\", clear\n📖\n\n\nuse\nLoad a Stata .dta file\nuse \"$processed/panel.dta\", clear\n📖\n\n\nsave\nSave the current dataset as a .dta file\nsave \"$processed/clean.dta\", replace\n📖\n\n\nerase\nDelete a file from disk\nerase \"$processed/temp.dta\"\n📖\n\n\n\n\nExample\n* Import a CSV file and save as Stata format\nimport delimited \"$raw/monthly_sales.csv\", clear varnames(1)\nsave \"$processed/monthly_sales.dta\", replace"
+  },
+  {
+    "objectID": "stata-cheat-sheet.html#sec-explore",
+    "href": "stata-cheat-sheet.html#sec-explore",
+    "title": "Data Analytics for Finance",
+    "section": "Data Exploration",
+    "text": "Data Exploration\nCommands for inspecting and understanding your dataset.\n\n\n\nCommand\nDescription\nExample\nDocs\n\n\n\n\ndescribe\nShow variable names, types, labels, and storage info\ndescribe\n📖\n\n\nlist\nDisplay selected observations in a table\nlist id date price in 1/5\n📖\n\n\ncount\nCount observations, optionally with a condition\ncount if missing(revenue)\n📖\n\n\nsummarize\nCompute summary statistics (mean, sd, min, max, etc.)\nsummarize price, detail\n📖\n\n\ntabulate\nProduce a one-way or two-way frequency table\ntabulate industry year\n📖\n\n\ntabstat\nDisplay compact summary statistics, optionally by group\ntabstat revenue profit, by(region) stat(n mean sd)\n📖\n\n\ntable\nFlexible table of statistics\ntable region year, stat(mean sales) nformat(%9.2f)\n📖\n\n\ncorrelate\nDisplay a correlation matrix\ncorrelate x1 x2 x3\n📖\n\n\nmisstable summarize\nSummarize patterns of missing data\nmisstable summarize revenue profit\n📖\n\n\nduplicates report\nReport duplicate observations\nduplicates report id date\n📖\n\n\n\n\nExample\n* Quick data audit\ndescribe\nsummarize price volume, detail\ntabstat price volume, by(industry) stat(n mean sd min max)\ncount if missing(price)\nmisstable summarize"
+  },
+  {
+    "objectID": "stata-cheat-sheet.html#sec-vars",
+    "href": "stata-cheat-sheet.html#sec-vars",
+    "title": "Data Analytics for Finance",
+    "section": "Data Management — Variables",
+    "text": "Data Management — Variables\nCommands for creating, modifying, and labeling variables.\n\n\n\nCommand\nDescription\nExample\nDocs\n\n\n\n\ngenerate\nCreate a new variable\ngen log_sales = ln(sales)\n📖\n\n\nreplace\nModify values of an existing variable\nreplace status = 1 if year &gt;= 2020\n📖\n\n\ndrop\nRemove variables or observations\ndrop temp_var\n📖\n\n\nkeep\nKeep only specified variables or observations\nkeep if year &gt;= 2015\n📖\n\n\nrename\nRename a variable\nrename total_assets ta\n📖\n\n\norder\nReorder variables in the dataset\norder id date price volume\n📖\n\n\nencode\nConvert a string variable to a labeled numeric variable\nencode country, gen(country_num)\n📖\n\n\nformat\nSet the display format of a variable\nformat date %td\n📖\n\n\nlabel variable\nAttach a descriptive label to a variable\nlabel variable log_sales \"Log of sales\"\n📖\n\n\nlabel define\nDefine a named set of value labels\nlabel define yesno 0 \"No\" 1 \"Yes\"\n📖\n\n\nlabel values\nAssign a value-label set to a variable\nlabel values treated yesno\n📖\n\n\nxtile\nCreate quantile-based categories (terciles, quartiles, etc.)\nxtile size_q = total_assets, nq(3)\n📖\n\n\n\n\nExample\n* Create and label a binary treatment indicator\ngen post = (date &gt;= td(1jan2020))\nlabel variable post \"Post-treatment indicator\"\nlabel define post_lbl 0 \"Pre\" 1 \"Post\"\nlabel values post post_lbl\ntabulate post"
+  },
+  {
+    "objectID": "stata-cheat-sheet.html#sec-datasets",
+    "href": "stata-cheat-sheet.html#sec-datasets",
+    "title": "Data Analytics for Finance",
+    "section": "Data Management — Observations & Datasets",
+    "text": "Data Management — Observations & Datasets\nCommands for sorting, merging, reshaping, and aggregating data.\n\n\n\nCommand\nDescription\nExample\nDocs\n\n\n\n\nsort\nSort observations by one or more variables\nsort firm_id date\n📖\n\n\nmerge\nMerge the current dataset with another on key variable(s)\nmerge m:1 firm_id using \"firms.dta\"\n📖\n\n\ncollapse\nAggregate data to a summary level\ncollapse (mean) avg_ret=ret, by(industry year)\n📖\n\n\nreshape\nReshape data between wide and long formats\nreshape wide sales, i(firm_id date) j(product)\n📖\n\n\npreserve\nSave a snapshot of the current data in memory\npreserve\n📖\n\n\nrestore\nRestore data from a previous preserve\nrestore\n📖\n\n\n\n\nExample: Merging datasets\n* Merge daily stock data with firm characteristics\nuse \"daily_prices.dta\", clear\nmerge m:1 firm_id using \"firm_characteristics.dta\"\ntabulate _merge\nkeep if _merge == 3\ndrop _merge\n\n\nExample: Collapse and reshape\n* Compute average price by firm and year, then reshape to wide\npreserve\ncollapse (mean) avg_price=price, by(firm_id year)\nreshape wide avg_price, i(firm_id) j(year)\nrestore"
+  },
+  {
+    "objectID": "stata-cheat-sheet.html#sec-bygroup",
+    "href": "stata-cheat-sheet.html#sec-bygroup",
+    "title": "Data Analytics for Finance",
+    "section": "By-group Operations",
+    "text": "By-group Operations\nCommands that operate separately within groups defined by one or more variables.\n\n\n\nCommand\nDescription\nExample\nDocs\n\n\n\n\nbysort / by\nExecute a command separately for each group\nbysort firm_id (date): gen cumret = sum(ret)\n📖\n\n\negen\nExtended generate — group-aware functions\nby firm_id: egen avg_ret = mean(ret)\n📖\n\n\n\n\nExample\n* Calculate running sum and group mean within each firm\nsort firm_id date\nbysort firm_id (date): gen cum_return = sum(daily_ret)\nby firm_id: egen firm_avg_ret = mean(daily_ret)\nby firm_id: egen firm_sd_ret  = sd(daily_ret)\n\n\n\n\n\n\nTipegen functions\n\n\n\nCommon egen functions: mean(), sd(), max(), min(), total(), count(), rank(). These calculate statistics within the group defined by by."
+  },
+  {
+    "objectID": "stata-cheat-sheet.html#sec-panel",
+    "href": "stata-cheat-sheet.html#sec-panel",
+    "title": "Data Analytics for Finance",
+    "section": "Panel Data Setup",
+    "text": "Panel Data Setup\nCommands for declaring and inspecting panel (longitudinal) data structures.\n\n\n\nCommand\nDescription\nExample\nDocs\n\n\n\n\nxtset\nDeclare the panel variable and time variable\nxtset firm_id date\n📖\n\n\nxtdescribe\nDescribe the panel structure (balance, gaps, span)\nxtdescribe\n📖\n\n\nL.\nTime-series lag operator (requires xtset or tsset)\ngen ret = ln(price / L.price)\n📖\n\n\n\n\nExample\n* Declare panel and compute log returns\nxtset firm_id date\nxtdescribe\ngen log_return = ln(price / L.price)\nlabel variable log_return \"Daily log return\"\n\n\n\n\n\n\nTipTime-series operators\n\n\n\nAfter xtset, you can use: L. (lag), L2. (two-period lag), F. (lead), D. (first difference). These operate within each panel unit automatically."
+  },
+  {
+    "objectID": "stata-cheat-sheet.html#sec-stats",
+    "href": "stata-cheat-sheet.html#sec-stats",
+    "title": "Data Analytics for Finance",
+    "section": "Statistical Tests",
+    "text": "Statistical Tests\nCommands for hypothesis testing and distributional checks.\n\n\n\nCommand\nDescription\nExample\nDocs\n\n\n\n\nttest\nOne- or two-sample t-test\nttest score, by(treatment)\n📖\n\n\nswilk\nShapiro–Wilk test for normality\nswilk residuals\n📖\n\n\nestat hettest\nBreusch–Pagan test for heteroskedasticity (after regress)\nestat hettest\n📖\n\n\n\n\nExample\n* Compare mean exam scores between two groups\nttest exam_score, by(study_group)\n\n* After a regression, check residual normality\nregress y x1 x2\npredict resid, residuals\nswilk resid"
+  },
+  {
+    "objectID": "stata-cheat-sheet.html#sec-regression",
+    "href": "stata-cheat-sheet.html#sec-regression",
+    "title": "Data Analytics for Finance",
+    "section": "Regression Analysis",
+    "text": "Regression Analysis\nCore commands for estimating linear models.\n\n\n\nCommand\nDescription\nExample\nDocs\n\n\n\n\nregress\nOLS linear regression\nregress y x1 x2 x3, robust\n📖\n\n\nxtreg\nPanel data regression (fixed or random effects)\nxtreg y x1 x2, fe vce(cluster firm_id)\n📖\n\n\npredict\nGenerate predicted values or residuals after estimation\npredict yhat, xb\n📖\n\n\n\n\nExample: OLS with robust standard errors\nregress wage education experience age, robust\npredict wage_hat\npredict resid, residuals\n\n\nExample: Panel fixed-effects regression\nxtset firm_id year\nxtreg revenue marketing_spend rd_spend, fe vce(cluster firm_id)"
+  },
+  {
+    "objectID": "stata-cheat-sheet.html#sec-estimates",
+    "href": "stata-cheat-sheet.html#sec-estimates",
+    "title": "Data Analytics for Finance",
+    "section": "Storing & Comparing Estimates",
+    "text": "Storing & Comparing Estimates\nCommands for saving regression results and displaying them side by side.\n\n\n\nCommand\nDescription\nExample\nDocs\n\n\n\n\nestimates store\nStore the current estimation result under a name\nestimates store model1\n📖\n\n\nestimates restore\nRestore a previously stored estimation\nestimates restore model1\n📖\n\n\nestimates table\nDisplay stored estimates side by side\nestimates table model1 model2, star\n📖\n\n\nestimates dir\nList all stored estimation results\nestimates dir\n📖\n\n\n\n\nExample\n* Run two specifications and compare\nregress y x1 x2, robust\nestimates store ols_base\n\nregress y x1 x2 x3 x4, robust\nestimates store ols_full\n\nestimates table ols_base ols_full, star stats(N r2_a)"
+  },
+  {
+    "objectID": "stata-cheat-sheet.html#sec-tables",
+    "href": "stata-cheat-sheet.html#sec-tables",
+    "title": "Data Analytics for Finance",
+    "section": "Formatted Regression Tables",
+    "text": "Formatted Regression Tables\nCommands from the estout package for producing publication-ready tables.\n\n\n\nCommand\nDescription\nExample\nDocs\n\n\n\n\neststo\nStore an estimation result (shorthand)\neststo m1: regress y x1, robust\n📖\n\n\nesttab\nExport a formatted regression table (screen, LaTeX, CSV, …)\nesttab m1 m2 using \"table.tex\", se label replace\n📖\n\n\nestpost\nPost results from non-estimation commands for use with esttab\nestpost summarize y x1 x2\n📖\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nInstall with ssc install estout, replace. Full documentation: estout homepage.\n\n\n\nExample\n* Build a regression table with three models\neststo clear\neststo m1: regress y x1, robust\neststo m2: regress y x1 x2, robust\neststo m3: regress y x1 x2 x3, robust\n\nesttab m1 m2 m3, ///\n    se star(* 0.10 ** 0.05 *** 0.01) ///\n    label r2 N ///\n    title(\"Regression Results\")\n\n\nExample: Summary statistics table\nestpost summarize price volume market_cap\nesttab, cells(\"mean(fmt(2)) sd(fmt(2)) min max count\") nomtitle nonumber"
+  },
+  {
+    "objectID": "stata-cheat-sheet.html#sec-graphics",
+    "href": "stata-cheat-sheet.html#sec-graphics",
+    "title": "Data Analytics for Finance",
+    "section": "Graphics — Core Plot Types",
+    "text": "Graphics — Core Plot Types\n\n\n\nCommand\nDescription\nExample\nDocs\n\n\n\n\ntwoway line\nLine plot (typically for time series)\ntwoway line price date, title(\"Price Over Time\")\n📖\n\n\ntwoway scatter\nScatter plot\nscatter y x, mlabel(name)\n📖\n\n\ntwoway lfit\nOverlay a linear-fit line\ntwoway (scatter y x) (lfit y x)\n📖\n\n\ntwoway function\nPlot an arbitrary function\ntwoway function y=0, range(x) lcolor(red)\n📖\n\n\ntwoway rcap\nRange plot with capped spikes (confidence intervals)\ntwoway rcap ci_hi ci_lo x\n📖\n\n\nhistogram\nHistogram with optional normal-density overlay\nhistogram ret, normal bin(40)\n📖\n\n\ngraph export\nSave the current graph to a file (PNG, PDF, SVG, …)\ngraph export \"fig.png\", replace width(1200)\n📖\n\n\n\n\nExample: Time series with event marker\ntwoway line price date if firm_id == 42, ///\n    title(\"Daily Stock Price\") ///\n    xtitle(\"Date\") ytitle(\"Price (EUR)\") ///\n    xline(`event_date', lpattern(dash) lcolor(red))\n\ngraph export \"$figures/price_plot.png\", replace width(1400)\n\n\nExample: Multi-series comparison\ntwoway ///\n    (line price date if industry == \"Tech\",  lcolor(navy)) ///\n    (line price date if industry == \"Banks\", lcolor(maroon)), ///\n    legend(label(1 \"Technology\") label(2 \"Banking\") ///\n           position(6) cols(2)) ///\n    xtitle(\"Date\") ytitle(\"Price (EUR)\")\n\n\nExample: Scatter with fitted line\ntwoway (scatter wage education) ///\n       (lfit wage education, lcolor(red)), ///\n    title(\"Wages vs. Education\") ///\n    xtitle(\"Years of Education\") ytitle(\"Hourly Wage\")"
+  },
+  {
+    "objectID": "stata-cheat-sheet.html#sec-graph-options",
+    "href": "stata-cheat-sheet.html#sec-graph-options",
+    "title": "Data Analytics for Finance",
+    "section": "Graphics — Common Options",
+    "text": "Graphics — Common Options\nA quick reference for the most-used graph options across the assignments.\n\n\n\n\n\n\n\n\nOption\nPurpose\nExample\n\n\n\n\ntitle()\nMain graph title\ntitle(\"Stock Returns\")\n\n\nsubtitle()\nSubtitle below the title\nsubtitle(\"2015–2020\")\n\n\nxtitle() / ytitle()\nAxis labels\nxtitle(\"Date\")\n\n\nnote()\nFootnote below the graph\nnote(\"Source: Compustat\")\n\n\nlegend()\nControl the legend\nlegend(label(1 \"Firm A\") position(6) cols(2))\n\n\nxline() / yline()\nAdd reference lines\nxline(21550, lpattern(dash) lcolor(red))\n\n\nlcolor()\nLine colour\nlcolor(navy)\n\n\nlwidth()\nLine thickness\nlwidth(medium)\n\n\nlpattern()\nLine pattern (solid, dash, dot, …)\nlpattern(dash)\n\n\nmcolor() / mlabel()\nMarker colour / labels\nmcolor(navy) mlabel(name)\n\n\nby()\nCreate a panel of graphs, one per group\nhistogram ret, by(firm)\n\n\nname(, replace)\nStore the graph in memory under a name\nname(g1, replace)\n\n\nxlabel() / ylabel()\nCustomise axis tick marks\nxlabel(, format(%td) angle(45))\n\n\n\n\n\n\n\n\n\nTipLine continuation\n\n\n\nUse /// at the end of a line to continue the command on the next line. This keeps long graph commands readable."
+  },
+  {
+    "objectID": "stata-cheat-sheet.html#sec-programming",
+    "href": "stata-cheat-sheet.html#sec-programming",
+    "title": "Data Analytics for Finance",
+    "section": "Programming & Flow Control",
+    "text": "Programming & Flow Control\n\n\n\nCommand\nDescription\nExample\nDocs\n\n\n\n\nforeach\nLoop over a list of items\nforeach v in x1 x2 x3 { summarizev’ }| [📖](https://www.stata.com/manuals/pforeach.pdf) | |forvalues| Loop over a numeric range |forvalues i = 1/5 { display i' }\n📖\n\n\nif / else\nConditional execution of code blocks\nif _rc == 0 { display \"OK\" }\n📖\n\n\ncapture\nRun a command and suppress any error; stores return code in _rc\ncapture confirm file \"data.dta\"\n📖\n\n\nquietly\nRun a command but suppress all output\nquietly regress y x1\n📖\n\n\nassert\nAssert that a condition holds; error if it does not\nassert _N &gt; 0\n📖\n\n\nconfirm\nConfirm that a file or variable exists\nconfirm file \"$raw/data.dta\"\n📖\n\n\nlevelsof\nStore the unique values of a variable in a local macro\nlevelsof region, local(regions)\n📖\n\n\nreturn list\nDisplay saved results from the last r-class command\nreturn list\n📖\n\n\n\n\nExample\n* Loop over variables and summarize each\nforeach var in revenue profit assets {\n    display \"--- `var' ---\"\n    summarize `var'\n}\n\n* Check all expected files exist\nforeach f in \"q1.dta\" \"q2.dta\" \"q3.dta\" {\n    capture confirm file \"$raw/`f'\"\n    if _rc != 0 {\n        display as error \"Missing: `f'\"\n    }\n}\n\n\n\n\n\n\nTipAccessing saved results\n\n\n\nMost Stata commands store results you can reuse:\n\nr-class (e.g., summarize): access with r(mean), r(sd), r(N), etc.\ne-class (e.g., regress): access with e(N), e(r2), e(cmd), etc.\nCoefficients: _b[varname] and _se[varname] after any estimation command.\nSystem values: _N (total obs), _n (current obs number), _rc (last return code).\nSystem constants: c(pwd), c(k) (number of variables), c(N) (number of obs)."
+  },
+  {
+    "objectID": "stata-cheat-sheet.html#sec-functions",
+    "href": "stata-cheat-sheet.html#sec-functions",
+    "title": "Data Analytics for Finance",
+    "section": "Functions Reference",
+    "text": "Functions Reference\nKey functions used inside generate, replace, if, and other expressions.\n\nMath functions\n\n\n\n\n\n\n\n\nFunction\nDescription\nExample\n\n\n\n\nln(x)\nNatural logarithm\ngen log_assets = ln(total_assets)\n\n\nexp(x)\nExponential (\\(e^x\\))\ngen level = exp(log_ret)\n\n\nabs(x)\nAbsolute value\ngen abs_ret = abs(ret)\n\n\nsum(x)\nRunning (cumulative) sum — within bysort: gen\nbysort id (date): gen cumsum = sum(ret)\n\n\n\n\n\nDate functions\n\n\n\n\n\n\n\n\nFunction\nDescription\nExample\n\n\n\n\ntd(DDmonYYYY)\nConvert a literal date string to a Stata date number\nlocal d = td(15mar2020)\n\n\ndate(s, mask)\nParse a string variable to a Stata date number\ngen stata_date = date(date_str, \"YMD\")\n\n\nmdy(m, d, y)\nCreate a date from month, day, and year values\ngen event = mdy(9, 18, 2015)\n\n\nyear(d)\nExtract the year from a date\ngen yr = year(date)\n\n\nmonth(d)\nExtract the month from a date\ngen mo = month(date)\n\n\nmofd(d)\nConvert a daily date to a monthly date\ngen month_date = mofd(date)\n\n\ndofm(m)\nConvert a monthly date to the first day of that month\ngen first_day = dofm(month_date)\n\n\n\n\n\nString & logical functions\n\n\n\n\n\n\n\n\nFunction\nDescription\nExample\n\n\n\n\nmissing(x)\nReturns 1 if x is missing, 0 otherwise\ncount if missing(price)\n\n\ninlist(x, a, b, …)\nReturns 1 if x equals any listed value\nkeep if inlist(country, \"DE\", \"FR\", \"NL\")\n\n\nstrpos(s, sub)\nPosition of substring (0 if not found)\ngen has_ag = strpos(name, \"AG\") &gt; 0\n\n\n\n\n\n\n\n\n\nTipDate formatting\n\n\n\nAfter creating a Stata date variable, apply a display format so dates are human-readable: format date %td (daily), format month_date %tm (monthly)."
+  },
+  {
+    "objectID": "stata-cheat-sheet.html#sec-packages",
+    "href": "stata-cheat-sheet.html#sec-packages",
+    "title": "Data Analytics for Finance",
+    "section": "User-Written Packages",
+    "text": "User-Written Packages\nThese packages are not part of base Stata and must be installed before first use.\n\n\n\nPackage\nDescription\nInstall\nDocs\n\n\n\n\nreghdfe\nLinear regression with multiple levels of fixed effects\nssc install reghdfe, replace\n📖\n\n\nftools\nFast Mata routines (required by reghdfe)\nssc install ftools, replace\n📖\n\n\nestout\nSuite for formatted tables (esttab, eststo, estpost)\nssc install estout, replace\n📖\n\n\ncoefplot\nCoefficient plots from stored estimates\nssc install coefplot, replace\n📖\n\n\ndistinct\nCount the number of distinct values of a variable\nssc install distinct, replace\n📖\n\n\nrangestat\nCalculate statistics over observation ranges / rolling windows\nssc install rangestat, replace\n📖\n\n\n\n\nExample: reghdfe\n* TWFE regression absorbing firm and time fixed effects\nreghdfe outcome treatment controls, ///\n    absorb(firm_id year#month) vce(cluster firm_id)\n\n\nExample: rangestat\n* Rolling 252-day standard deviation of returns\nrangestat (sd) rolling_sd = daily_ret, ///\n    interval(date -252 -1) by(firm_id)"
+  },
+  {
+    "objectID": "stata-cheat-sheet.html#sec-shell",
+    "href": "stata-cheat-sheet.html#sec-shell",
+    "title": "Data Analytics for Finance",
+    "section": "Shell Commands",
+    "text": "Shell Commands\n\n\n\nCommand\nDescription\nExample\nDocs\n\n\n\n\n! (prefix)\nExecute an operating-system shell command from within Stata\n!ls -lh \"$figures\"\n📖\n\n\n\n\n    \n    \n        \n            \n                Data Analytics for Finance\n                BM17FI · Academic Year 2025–26\n            \n            \n        \n        \n        \n            \n                Created by: Caspar David Peter\n            \n            \n                © 2026 Rotterdam School of Management"
   }
 ]
