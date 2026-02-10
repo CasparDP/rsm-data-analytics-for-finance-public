@@ -7600,31 +7600,13 @@ a.anchor-link {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>✅ The environment is cleared and ready.
-</pre>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<style>div.jp-Notebook .datagrid-container {min-height: 448px; }</style>
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Install-Required-Packages">Install Required Packages<a class="anchor-link" href="#Install-Required-Packages">¶</a></h3><p>We'll use the <code>estout</code> package for creating publication-quality tables later in the course.</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput">
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>✅ The estout package is installed.
+<pre>✅ The environment is cleared and ready.
 </pre>
 </div>
 </div>
@@ -7928,6 +7910,60 @@ Remaining firms: 4
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Task-1.4:-Save-the-Cleaned-Header-Data">Task 1.4: Save the Cleaned Header Data<a class="anchor-link" href="#Task-1.4:-Save-the-Cleaned-Header-Data">¶</a></h3><p><strong>What you'll do</strong>: Save the data (with the 4 filtered firms) to a temporary file for merging with the price data in the next section.</p>
+<p><strong>Why this matters</strong>: We need the header data saved in a format that can be merged with the price data. Otherwise, we would have to repeat the loading and filtering steps every time we want to merge or analyze the data. By saving a cleaned version of the header data, we streamline our workflow for the next sections.</p>
+<p><strong>What to expect</strong>: The header data will saved for the upcoming merge in the "processed" folder.</p>
+<div style="background: linear-gradient(135deg, #e8f4f8 0%, #d0e8f0 100%); border-left: 4px solid #1a5f7a; border-radius: 8px; padding: 15px 20px; margin: 15px 0;">
+<div style="display: flex; align-items: center; margin-bottom: 10px;">
+<img alt="Stata" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MTUuMjcgOTUuODkiPg0KICA8ZGVmcz4NCiAgICA8c3R5bGU+DQogICAgICAuY2xzLTEgew0KICAgICAgICBmaWxsOiAjMTM1ZjkwOw0KICAgICAgfQ0KICAgIDwvc3R5bGU+DQogIDwvZGVmcz4NCiAgPHRpdGxlPnN0YXRhLWxvZ28tYmx1ZTwvdGl0bGU+DQogIDxnIGlkPSJGb3JlZ3JvdW5kIj4NCiAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik05NC4yMywwbC04LDIxLjMxSDI5LjNhOCw4LDAsMCwwLDAsMTZINjQuOTNhMjkuMywyOS4zLDAsMCwxLDAsNTguNkgwTDgsNzQuNThINjQuOTNhOCw4LDAsMSwwLDAtMTZIMjkuM0EyOS4zLDI5LjMsMCwwLDEsMjkuMywwWiIvPg0KICAgIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIyNTkuOSAwIDI1MS45MSAyMS4zMSAyNzguNTUgMjEuMzEgMjc4LjU1IDk1Ljg5IDI5OS44NiA5NS44OSAyOTkuODYgMjEuMzEgMzIxLjE2IDIxLjMxIDMyOS4xNSAwIDI1OS45IDAiLz4NCiAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0zODYsNTguNkgzNDVhOCw4LDAsMCwwLDAsMTZoNDl2LTE2Wk0zNjYuMzEsMzcuMjlIMzk0VjI5YTgsOCwwLDAsMC04LTcuNjVIMzIzLjY5bDgtMjEuMzFIMzg2YTI5LjMsMjkuMywwLDAsMSwyOS4zLDI5LjNWOTUuODlIMzQ1YTI5LjMsMjkuMywwLDAsMSwwLTU4LjZaIi8+DQogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMjIyLjgsNTguNmgtNDFhOCw4LDAsMSwwLDAsMTZoNDguOTV2LTE2Wk0yMTIuMTQsMzcuMjlIMjMwLjhWMjlhOCw4LDAsMCwwLTgtNy42NUgxNjAuNTNsOC0yMS4zMUgyMjIuOGEyOS4zLDI5LjMsMCwwLDEsMjkuMywyOS4zVjk1Ljg5SDE4MS44NGEyOS4zLDI5LjMsMCwwLDEsMC01OC42WiIvPg0KICAgIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSI5Ni43MyAwIDg4Ljc0IDIxLjMxIDExNS4zOCAyMS4zMSAxMTUuMzggOTUuODkgMTM2LjY5IDk1Ljg5IDEzNi42OSAyMS4zMSAxNTggMjEuMzEgMTY1Ljk5IDAgOTYuNzMgMCIvPg0KICA8L2c+DQo8L3N2Zz4NCg==" style="height: 24px; margin-right: 10px;"/>
+<span style="font-weight: bold; color: #1a5f7a; font-size: 16px;">Stata Tip</span>
+</div>
+<div style="color: #333; font-size: 14px;">
+        Save to a temporary .dta file: <code style="background: #fff; padding: 2px 6px; border-radius: 4px;">save "$processed/temp_header.dta", replace</code>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput">
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>(file
+    /Users/casparm4/Github/rsm-data-analytics-in-finance-private/private/assi
+    &gt; gnments/01-assignment/data/processed/temp_header.dta not found)
+file
+    /Users/casparm4/Github/rsm-data-analytics-in-finance-private/private/assi
+    &gt; gnments/01-assignment/data/processed/temp_header.dta saved
+---- CHECKPOINT: header data prepared ----
+Header data filtered and saved with 4 firms
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput">
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>✅ Test passed: File saved successfully in processed folder.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <hr/>
 <h2 id="Section-2:-Load-and-Examine-Price-Data">Section 2: Load and Examine Price Data<a class="anchor-link" href="#Section-2:-Load-and-Examine-Price-Data">¶</a></h2>
 </div>
@@ -8141,7 +8177,7 @@ Date variable created and formatted
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Task-3.1:-Identify-Missing-Values">Task 3.1: Identify Missing Values<a class="anchor-link" href="#Task-3.1:-Identify-Missing-Values">¶</a></h3><p><strong>What you'll do</strong>: Check how many observations have missing values in the <code>prccd</code> (closing price) variable.</p>
+<h3 id="Task-3.1:-Identify-Missing-Values-(if-any)">Task 3.1: Identify Missing Values (if any)<a class="anchor-link" href="#Task-3.1:-Identify-Missing-Values-(if-any)">¶</a></h3><p><strong>What you'll do</strong>: Check how many observations have missing values in the <code>prccd</code> (closing price) variable.</p>
 <p><strong>Why this matters</strong>: Missing prices can occur when trading is halted, data wasn't collected, or there were data transmission errors. These missing values will cause problems in calculations (returns, averages, etc.), so we need to identify and handle them.</p>
 <p><strong>What to expect</strong>: You may find a small number of observations with missing prices. This is normal in financial data.</p>
 <div style="background: linear-gradient(135deg, #e8f4f8 0%, #d0e8f0 100%); border-left: 4px solid #1a5f7a; border-radius: 8px; padding: 15px 20px; margin: 15px 0;">
@@ -8218,8 +8254,7 @@ Observations after removing missing prices: 9128
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  0
-✅ Test passed: No missing values in price data.
+<pre>✅ Test passed: No missing values in price data.
 </pre>
 </div>
 </div>
@@ -8314,53 +8349,7 @@ Cleaned price data saved temporarily
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Task-4.3:-Load-and-Save-Header-Data">Task 4.3: Load and Save Header Data<a class="anchor-link" href="#Task-4.3:-Load-and-Save-Header-Data">¶</a></h3><p><strong>What you'll do</strong>: Load the header data (with the 4 filtered firms), apply the same filtering, and save it to a temporary file for merging.</p>
-<p><strong>Why this matters</strong>: We need the header data saved in a format that can be merged with the price data. Since we filtered firms in Section 1, we need to apply the same filter here.</p>
-<p><strong>What to expect</strong>: The header data will be loaded, filtered to 4 firms, and saved for the upcoming merge.</p>
-<div style="background: linear-gradient(135deg, #e8f4f8 0%, #d0e8f0 100%); border-left: 4px solid #1a5f7a; border-radius: 8px; padding: 15px 20px; margin: 15px 0;">
-<div style="display: flex; align-items: center; margin-bottom: 10px;">
-<img alt="Stata" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MTUuMjcgOTUuODkiPg0KICA8ZGVmcz4NCiAgICA8c3R5bGU+DQogICAgICAuY2xzLTEgew0KICAgICAgICBmaWxsOiAjMTM1ZjkwOw0KICAgICAgfQ0KICAgIDwvc3R5bGU+DQogIDwvZGVmcz4NCiAgPHRpdGxlPnN0YXRhLWxvZ28tYmx1ZTwvdGl0bGU+DQogIDxnIGlkPSJGb3JlZ3JvdW5kIj4NCiAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik05NC4yMywwbC04LDIxLjMxSDI5LjNhOCw4LDAsMCwwLDAsMTZINjQuOTNhMjkuMywyOS4zLDAsMCwxLDAsNTguNkgwTDgsNzQuNThINjQuOTNhOCw4LDAsMSwwLDAtMTZIMjkuM0EyOS4zLDI5LjMsMCwwLDEsMjkuMywwWiIvPg0KICAgIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIyNTkuOSAwIDI1MS45MSAyMS4zMSAyNzguNTUgMjEuMzEgMjc4LjU1IDk1Ljg5IDI5OS44NiA5NS44OSAyOTkuODYgMjEuMzEgMzIxLjE2IDIxLjMxIDMyOS4xNSAwIDI1OS45IDAiLz4NCiAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0zODYsNTguNkgzNDVhOCw4LDAsMCwwLDAsMTZoNDl2LTE2Wk0zNjYuMzEsMzcuMjlIMzk0VjI5YTgsOCwwLDAsMC04LTcuNjVIMzIzLjY5bDgtMjEuMzFIMzg2YTI5LjMsMjkuMywwLDAsMSwyOS4zLDI5LjNWOTUuODlIMzQ1YTI5LjMsMjkuMywwLDAsMSwwLTU4LjZaIi8+DQogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMjIyLjgsNTguNmgtNDFhOCw4LDAsMSwwLDAsMTZoNDguOTV2LTE2Wk0yMTIuMTQsMzcuMjlIMjMwLjhWMjlhOCw4LDAsMCwwLTgtNy42NUgxNjAuNTNsOC0yMS4zMUgyMjIuOGEyOS4zLDI5LjMsMCwwLDEsMjkuMywyOS4zVjk1Ljg5SDE4MS44NGEyOS4zLDI5LjMsMCwwLDEsMC01OC42WiIvPg0KICAgIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSI5Ni43MyAwIDg4Ljc0IDIxLjMxIDExNS4zOCAyMS4zMSAxMTUuMzggOTUuODkgMTM2LjY5IDk1Ljg5IDEzNi42OSAyMS4zMSAxNTggMjEuMzEgMTY1Ljk5IDAgOTYuNzMgMCIvPg0KICA8L2c+DQo8L3N2Zz4NCg==" style="height: 24px; margin-right: 10px;"/>
-<span style="font-weight: bold; color: #1a5f7a; font-size: 16px;">Stata Tip</span>
-</div>
-<div style="color: #333; font-size: 14px;">
-        We'll load the header CSV, apply the same firm filter, and save to a temporary .dta file: <code style="background: #fff; padding: 2px 6px; border-radius: 4px;">save "$processed/temp_header.dta", replace</code>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput">
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>(encoding automatically selected: ISO-8859-1)
-(7 vars, 7 obs)
-(1 observation deleted)
-(1 observation deleted)
-(1 observation deleted)
-(file
-    /Users/casparm4/Github/rsm-data-analytics-in-finance-private/private/assi
-    &gt; gnments/01-assignment/data/processed/temp_header.dta not found)
-file
-    /Users/casparm4/Github/rsm-data-analytics-in-finance-private/private/assi
-    &gt; gnments/01-assignment/data/processed/temp_header.dta saved
----- CHECKPOINT: header data prepared ----
-Header data filtered and saved with 4 firms
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Task-4.4:-Reload-Price-Data-and-Merge">Task 4.4: Reload Price Data and Merge<a class="anchor-link" href="#Task-4.4:-Reload-Price-Data-and-Merge">¶</a></h3><p><strong>What you'll do</strong>: Load the saved price data back into memory and merge it with the header data.</p>
+<h3 id="Task-4.3:-Reload-Price-Data-and-Merge">Task 4.3: Reload Price Data and Merge<a class="anchor-link" href="#Task-4.3:-Reload-Price-Data-and-Merge">¶</a></h3><p><strong>What you'll do</strong>: Load the saved price data back into memory and merge it with the header data.</p>
 <p><strong>Why this matters</strong>: This completes our merge workflow—we now have both datasets ready to combine using the <code>gvkey</code> identifier.</p>
 <p><strong>Type of merge</strong>: This is a <strong>many-to-one (m:1)</strong> merge because:</p>
 <ul>
@@ -8368,14 +8357,11 @@ Header data filtered and saved with 4 firms
 <li>Header data (using): One observation per firm</li>
 <li>Each of the many price observations will match to the one corresponding header observation</li>
 </ul>
-<p><strong>What to expect</strong>: After merging, each price observation will have the firm's name, SIC code, ISIN, and other identifiers attached to it.</p>
+<p><strong>What to expect</strong>: After merging, each price observation will have the firm's name, SIC code, ISIN, and other identifiers attached to it. You can use <code>tab _merge</code> for an overview of how many observations matched successfully.</p>
 <div style="background: linear-gradient(135deg, #e8f4f8 0%, #d0e8f0 100%); border-left: 4px solid #1a5f7a; border-radius: 8px; padding: 15px 20px; margin: 15px 0;">
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
 <img alt="Stata" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MTUuMjcgOTUuODkiPg0KICA8ZGVmcz4NCiAgICA8c3R5bGU+DQogICAgICAuY2xzLTEgew0KICAgICAgICBmaWxsOiAjMTM1ZjkwOw0KICAgICAgfQ0KICAgIDwvc3R5bGU+DQogIDwvZGVmcz4NCiAgPHRpdGxlPnN0YXRhLWxvZ28tYmx1ZTwvdGl0bGU+DQogIDxnIGlkPSJGb3JlZ3JvdW5kIj4NCiAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik05NC4yMywwbC04LDIxLjMxSDI5LjNhOCw4LDAsMCwwLDAsMTZINjQuOTNhMjkuMywyOS4zLDAsMCwxLDAsNTguNkgwTDgsNzQuNThINjQuOTNhOCw4LDAsMSwwLDAtMTZIMjkuM0EyOS4zLDI5LjMsMCwwLDEsMjkuMywwWiIvPg0KICAgIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIyNTkuOSAwIDI1MS45MSAyMS4zMSAyNzguNTUgMjEuMzEgMjc4LjU1IDk1Ljg5IDI5OS44NiA5NS44OSAyOTkuODYgMjEuMzEgMzIxLjE2IDIxLjMxIDMyOS4xNSAwIDI1OS45IDAiLz4NCiAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0zODYsNTguNkgzNDVhOCw4LDAsMCwwLDAsMTZoNDl2LTE2Wk0zNjYuMzEsMzcuMjlIMzk0VjI5YTgsOCwwLDAsMC04LTcuNjVIMzIzLjY5bDgtMjEuMzFIMzg2YTI5LjMsMjkuMywwLDAsMSwyOS4zLDI5LjNWOTUuODlIMzQ1YTI5LjMsMjkuMywwLDAsMSwwLTU4LjZaIi8+DQogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMjIyLjgsNTguNmgtNDFhOCw4LDAsMSwwLDAsMTZoNDguOTV2LTE2Wk0yMTIuMTQsMzcuMjlIMjMwLjhWMjlhOCw4LDAsMCwwLTgtNy42NUgxNjAuNTNsOC0yMS4zMUgyMjIuOGEyOS4zLDI5LjMsMCwwLDEsMjkuMywyOS4zVjk1Ljg5SDE4MS44NGEyOS4zLDI5LjMsMCwwLDEsMC01OC42WiIvPg0KICAgIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSI5Ni43MyAwIDg4Ljc0IDIxLjMxIDExNS4zOCAyMS4zMSAxMTUuMzggOTUuODkgMTM2LjY5IDk1Ljg5IDEzNi42OSAyMS4zMSAxNTggMjEuMzEgMTY1Ljk5IDAgOTYuNzMgMCIvPg0KICA8L2c+DQo8L3N2Zz4NCg==" style="height: 24px; margin-right: 10px;"/>
 <span style="font-weight: bold; color: #1a5f7a; font-size: 16px;">Stata Tip</span>
-</div>
-<div style="display: flex; align-items: center; margin-bottom: 10px;">
-<span style="font-weight: bold; color: #1a5f7a; font-size: 16px;">Merge Types</span>
 </div>
 <div style="color: #333; font-size: 14px;">
 <ul style="margin: 8px 0; padding-left: 20px;">
@@ -8383,9 +8369,12 @@ Header data filtered and saved with 4 firms
 <li><strong>m:1 merge</strong>: Many observations in current data match one in merge file</li>
 <li><strong>1:m merge</strong>: One observation in current data matches many in merge file</li>
 </ul>
-        Syntax: <code style="background: #fff; padding: 2px 6px; border-radius: 4px;">use "$processed/temp_prices.dta", clear</code> then <code style="background: #fff; padding: 2px 6px; border-radius: 4px;">merge m:1 gvkey using "$processed/temp_header.dta"</code>
 </div>
 </div>
+<div class="highlight"><pre><span></span><span class="k">use</span> <span class="s">"</span><span class="vg">$processed</span><span class="s">/temp_prices.dta"</span>,<span class="k"> clear</span>
+<span class="k">merge m</span>:<span class="m">1</span> gvkey using <span class="s">"</span><span class="vg">$processed</span><span class="s">/temp_header.dta"</span>
+<span class="k">tab</span> _merge
+</pre></div>
 <div style="background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%); border-left: 4px solid #9333ea; border-radius: 8px; padding: 15px 20px; margin: 15px 0;">
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
 <span style="font-size: 18px; margin-right: 8px;">🚀</span>
@@ -8438,14 +8427,15 @@ Merge results displayed above; temporary files deleted
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput">
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Task-4.5:-Keep-Only-Matched-Observations">Task 4.5: Keep Only Matched Observations<a class="anchor-link" href="#Task-4.5:-Keep-Only-Matched-Observations">¶</a></h3><p><strong>What you'll do</strong>: Keep only observations that successfully matched in both datasets (where <code>_merge == 3</code>).</p>
-<p><strong>Why this matters</strong>: Stata creates a special variable called <code>_merge</code> to show the merge result for each observation. We only want observations that appear in both datasets—these are the firms for which we have both identifier information AND price data.</p>
+<h3 id="Task-4.4:-Keep-Only-Matched-Observations">Task 4.4: Keep Only Matched Observations<a class="anchor-link" href="#Task-4.4:-Keep-Only-Matched-Observations">¶</a></h3><p><strong>What you'll do</strong>: Keep only observations that successfully matched in both datasets (where <code>keep if _merge == 3</code>).</p>
+<p><strong>Why this matters</strong>: Stata creates a special variable called <code>_merge</code> to show the merge result for each observation. We only want observations that appear in both datasets—these are the firms for which we have both identifier information AND price data. You can use <code>tab _merge</code> for an overview of how many observations matched successfully, if you have not already done so.</p>
 <p><strong>What to expect</strong>: All observations should match (_merge == 3) since both datasets contain the same 4 firms. After keeping matched observations and dropping the <code>_merge</code> variable, you should have the same number of observations as before the merge.</p>
 <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-left: 4px solid #6c757d; border-radius: 8px; padding: 15px 20px; margin: 15px 0;">
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
@@ -8856,7 +8846,7 @@ Year and month variables created
 Contains data from /Users/casparm4/Github/rsm-data-analytics-in-finance-private
 &gt; /private/assignments/01-assignment/data/processed/temp_prices.dta
  Observations:         5,216                  
-    Variables:            13                  6 Jan 2026 22:47
+    Variables:            13                  10 Feb 2026 09:26
 -------------------------------------------------------------------------------
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
