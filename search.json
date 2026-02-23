@@ -1124,14 +1124,14 @@
     "href": "lectures/lecture_4.html#overview",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "Overview",
-    "text": "Overview"
+    "text": "Overview\nRecap of previous lecture"
   },
   {
     "objectID": "lectures/lecture_4.html#overview-1",
     "href": "lectures/lecture_4.html#overview-1",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "Overview",
-    "text": "Overview\nRecap of previous lecture"
+    "text": "Overview\nToday’s learning objectives\n\nWhat are good and bad controls in regression analysis?\nUnderstand the Difference-in-Differences (DiD) framework for causal inference using panel data\nLearn how to implement DiD design, including fixed effects\nRecognize the importance of appropriate standard error adjustments in DiD analyses\nExplore advanced DiD topics such as staggered adoption and recent methodological developments"
   },
   {
     "objectID": "lectures/lecture_4.html#overview-2",
@@ -1152,154 +1152,154 @@
     "href": "lectures/lecture_4.html#what-to-do-if-random-assignment-is-not-possible-1",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "What to do if random assignment is not possible?",
-    "text": "What to do if random assignment is not possible?\nBuilding the OLS model\n\n\nFrom Huntington-Klein (2022) chapter 13\n\n\nLet’s build the OLS model for DiLLMa\n\nOutcome variable: exam_score\nTreatment variable: treated (1 if course allows LLM use, 0 otherwise)"
+    "text": "What to do if random assignment is not possible?\nBuilding the OLS model\n\n\nFrom Huntington-Klein (2022) chapter 13\n\n\nLet’s build the OLS model for DiLLMa\n\nOutcome variable: exam_score\nTreatment variable: treated (1 if student uses LLM, 0 otherwise)"
   },
   {
     "objectID": "lectures/lecture_4.html#control-variables-in-regression-analysis-1",
     "href": "lectures/lecture_4.html#control-variables-in-regression-analysis-1",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "Control Variables in Regression Analysis",
-    "text": "Control Variables in Regression Analysis\nGood vs. Bad controls\n\n\nGood controls\n\nVariables that are correlated with the outcome but not with the treatment\nHelp reduce omitted variable bias\nImprove precision of estimates\n\n\nBad controls\n\nVariables that are affected by the treatment (mediators)\nVariables that are correlated with both treatment and outcome (colliders)\nCan introduce bias into estimates"
+    "text": "Control Variables in Regression Analysis\nGood vs. Bad controls\n\n\nGood controls\n\nVariables that are not caused by the treatment — they can be correlated with both treatment and outcome\nClosing a “backdoor path” (confounder) reduces omitted variable bias (ability is a good control, but unobservable)\nPure outcome predictors (uncorrelated with treatment) improve precision without biasing estimates\n\n\nBad controls\n\nVariables that lie on the causal path from treatment to outcome (mediators)\nVariables that are caused by both treatment and outcome (colliders)\nAdding every available variable is not a safe strategy"
   },
   {
     "objectID": "lectures/lecture_4.html#control-variables-in-regression-analysis-2",
     "href": "lectures/lecture_4.html#control-variables-in-regression-analysis-2",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "Control Variables in Regression Analysis",
-    "text": "Control Variables in Regression Analysis\nGood controls - Examples\n\n\nConfounder - “Common cause”\n\n\n“Hidden common cause”\n\n\n\nDiLLMA example: controlling for study hours and attendance rate\n\n\n\nFor more details on causal diagrams check Huntington-Klein (2022) chapters 6-9 and bad controls Cinelli, Forney, and Pearl (2024)!"
+    "text": "Control Variables in Regression Analysis\nGood controls - Examples\nConfounder - “Common cause”\n\n\n\n\n\nLecture 3 example: Student ability\n\nControlling for ability helps isolate the causal effect of LLM use on scores by blocking this backdoor path: LLM use ← ability → exam score\nOther good controls could include age, gender, etc. — variables that are correlated with both LLM use and exam scores but are not caused by LLM use\n\n\n\n\n\nFor more details on causal diagrams check Huntington-Klein (2022) chapters 6-9 and bad controls Cinelli, Forney, and Pearl (2024)!"
   },
   {
     "objectID": "lectures/lecture_4.html#control-variables-in-regression-analysis-3",
     "href": "lectures/lecture_4.html#control-variables-in-regression-analysis-3",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "Control Variables in Regression Analysis",
-    "text": "Control Variables in Regression Analysis\nBad controls - Examples\n\n\nMediator\n\n\nVariables that lie on the causal path between treatment and outcome\nControlling for mediator can block part of the treatment effect, leading to biased estimates\n\n\nCollider\n\n\nVariables that are influenced by both treatment and outcome\nControlling for collider can open a backdoor path, introducing spurious associations and bias"
+    "text": "Control Variables in Regression Analysis\nBad controls — Collider\nStructure: X → Z ← Y\n\n\nZ is caused by both X and Y — two arrows point into Z\nConditioning on Z opens a spurious path between X and Y, creating a phantom association that does not exist in the full population\n\nExample: Office hour attendance\n\nSome students need to check “hallucinated” or complicated LLM responses during preparation via office hour attendance (X → Z)\nOther students attend office hours because they are struggling with the material (Y → Z) and expect a lower score"
   },
   {
     "objectID": "lectures/lecture_4.html#control-variables-in-regression-analysis-4",
     "href": "lectures/lecture_4.html#control-variables-in-regression-analysis-4",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "Control Variables in Regression Analysis",
-    "text": "Control Variables in Regression Analysis\nBad controls - Example\n\n\nMediator\n\n\nVariables that lie on the causal path between treatment and outcome\nControlling for mediator can block part of the treatment effect, leading to biased estimates\n\n\nSimple Mediator Example\n\n\nBias arises from controlling fro a variable that lies on the causal path X → C → Y\nIf we include reported earnings as a control in a regression of market return on accounting choices, we remove part of the effect of accounting on returns.\n\n\n#TODO: Add more examples"
+    "text": "Control Variables in Regression Analysis\nSummary\n\nGood controls help isolate the causal effect by blocking non-causal paths (confounders)\nBad controls can bias estimates by blocking causal paths (mediators) or opening spurious paths (colliders)\n\n\n“To fix a Confounder, you MUST include it. To avoid a Collider, you MUST exclude it.”\n\n\n\n\n\n\n\nTakeaway: Be deliberate about controls\n\n\nDiD with two-way fixed effects largely sidesteps the confounder problem by absorbing time-invariant differences between units. But mediators remain a live concern — if you control for a variable that lies on the causal path from your treatment to the outcome, you will underestimate the treatment effect."
   },
   {
     "objectID": "lectures/lecture_4.html#difference-in-differences-did-1",
     "href": "lectures/lecture_4.html#difference-in-differences-did-1",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "Difference-in-Differences (DiD)",
-    "text": "Difference-in-Differences (DiD)\nKey concepts\n\n\n\n\n\n\nWhat is Difference‑in‑Differences (DID)?\n\n\nDifference‑in‑Differences (DID) is a quasi‑experimental method that exploits within‑group variation over time and cross‑group variation to identify a causal effect when random assignment is infeasible."
+    "text": "Difference-in-Differences (DiD)\nKey concepts\n\n\n\n\n\n\nWhat is Difference‑in‑Differences (DID)?\n\n\nDifference‑in‑Differences (DID) is a quasi‑experimental method that exploits within‑group variation over time and cross‑group variation to identify a causal effect when random assignment is infeasible.\n\n\n\n\n\n\n\n\n\n\nParallel Trends Assumption\n\n\nDiD only recovers the causal effect if the “parallel trends assumption” holds!"
   },
   {
     "objectID": "lectures/lecture_4.html#difference-in-differences-did-2",
     "href": "lectures/lecture_4.html#difference-in-differences-did-2",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "Difference-in-Differences (DiD)",
-    "text": "Difference-in-Differences (DiD)\nWhy Differnces - Isn’t one difference enough?\n\n\nBefore vs After (time variation)\nWhat is it?\nCompare outcomes before and after treatment implementation, e.g. pre- and post-policy change\nWhy not enough for causal inference?\nAll variation in Treatment is explained by Time!\n\nTreated vs Control (group variation)\nWhat is it?\nCompare outcomes between treated and control groups, e.g. those affected by a policy change vs those not affected\nWhy not enough for causal inference?\nDifferences between Treated and Control groups may be driven by time-invariant confounders, e.g. ability, demographics, location, etc.\n\nCombining both, allows to isolating the causal impact of the treatment a.k.a. average treatment effect on the treated (ATT)"
+    "text": "Difference-in-Differences (DiD)\nWhy Differences — Isn’t one difference enough?\n\n\nBefore vs After (time variation)\nWhat is it?\nCompare outcomes before and after treatment implementation, e.g. pre- and post-policy change\nWhy not enough for causal inference?\nAll variation in Treatment is explained by Time!\n\nTreated vs Control (group variation)\nWhat is it?\nCompare outcomes between treated and control groups, e.g. those affected by a policy change vs those not affected\nWhy not enough for causal inference?\nDifferences between Treated and Control groups may be driven by time-invariant confounders, e.g. ability, demographics, location, etc.\n\nCombining both allows us to isolate the causal impact of the treatment a.k.a. average treatment effect on the treated (ATT)"
   },
   {
     "objectID": "lectures/lecture_4.html#difference-in-differences-did-3",
     "href": "lectures/lecture_4.html#difference-in-differences-did-3",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "Difference-in-Differences (DiD)",
-    "text": "Difference-in-Differences (DiD)\nWhy Differnces - Isn’t one difference enough?\nA picture is worth a thousand words\n\n\n\n\n\n\n\nDiD only recovers the causal effect if the “parallel trends assumption” holds!"
+    "text": "Difference-in-Differences (DiD)\nDiLLMa - Setting continued\n\nWe observe students’ exam scores before and after LLMs were introduced 1\nSome courses allowed LLM use (treatment), others banned it (control)\nGoal: Estimate the causal effect of allowing LLM use on exam scores\n\nIn short\nCompare grade changes in allowed vs. banned courses, before and after LLMs became available\n\nDiD isolates the treated group’s response, conditional on the assumption that the untreated group’s changes represent the non-treatment counterfactual for the treated group\n\nIt is worth noting that the underlying data is a panel dataset with multiple observations per student."
   },
   {
     "objectID": "lectures/lecture_4.html#difference-in-differences-did-4",
     "href": "lectures/lecture_4.html#difference-in-differences-did-4",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "Difference-in-Differences (DiD)",
-    "text": "Difference-in-Differences (DiD)\nDiLLMa - Setting continued\n\nWe observe students’ exam scores before and after LLMs were introduced 1\nSome courses allowed LLM use (treatment), others banned it (control)\nGoal: Estimate the causal effect of allowing LLM use on exam scores\n\nIn short\nCompare grade changes in allowed vs. banned courses, before and after LLMs became available\n\nDiD isolates the treated group’s response, conditional on the assumption that the untreated group’s changes represent the non-treatment counterfactual for the treated group\n\nIt is worth noting that the underlying data is a panel dataset with multiple observations per student."
+    "text": "Difference-in-Differences (DiD)\nCanonical DiD model - The two-by-two design\nThe two-by-two set-up\n\n\n\n\n\n\n\n\n\n\n(1) After\n(2) Before\n(1) - (2)\n\n\n\n\n(a) Treatment\nY\\(_{treated,\\ after}\\)\nY\\(_{treated,\\ before}\\)\n\\(\\Delta_{treated}\\)\n\n\n(b) Control\nY\\(_{control,\\ after}\\)\nY\\(_{control,\\ before}\\)\n\\(\\Delta_{control}\\)\n\n\n(a) - (b)\n\\(\\Delta_{after}\\)\n\\(\\Delta_{before}\\)\nDiD\n\n\n\nA typical DiD regression looks like this\n\\[Y = \\beta_0 + \\beta_1 Treated + \\beta_2 After + \\beta_3 Treated \\times After + \\epsilon\\]\n\nThe difference-in-differences regression gives you the same estimate as if you took differences in the group averages\nIt takes also care of any unobserved constant differences between subjects and time trends!"
   },
   {
     "objectID": "lectures/lecture_4.html#difference-in-differences-did-5",
     "href": "lectures/lecture_4.html#difference-in-differences-did-5",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "Difference-in-Differences (DiD)",
-    "text": "Difference-in-Differences (DiD)\nCanonical DiD model - The two-by-two design\nThe two-by-two set-up\n\n\n\n\n\n\n\n\n\n\n(1) After\n(2) Before\n(1) - (2)\n\n\n\n\n(a) Treatment\nY\\(_{treated,\\ after}\\)\nY\\(_{treated,\\ before}\\)\n\\(\\Delta_{treated}\\)\n\n\n(b) Control\nY\\(_{control,\\ after}\\)\nY\\(_{control,\\ before}\\)\n\\(\\Delta_{control}\\)\n\n\n(a) - (b)\n\\(\\Delta_{after}\\)\n\\(\\Delta_{before}\\)\nDiD\n\n\n\nA typical DiD regression looks like this\n\\[Y = \\beta_0 + \\beta_1 Treated + \\beta_2 After + \\beta_3 Treated \\times After + \\epsilon\\]\n\nThe difference-in-differences regression gives you the same estimate as if you took differences in the group averages\nIt takes also care of any unobserved constant differences between subjects and time trends!"
+    "text": "Difference-in-Differences (DiD)\nCanonical DiD model - The two-by-two design\nThe two-by-two set-up\n\n\n\n\n\n\n\n\n\n\n(1) After\n(2) Before\n(1) - (2)\n\n\n\n\n(a) Treatment\n\\(\\beta_0 + \\beta_1+\\beta_2+\\beta_3\\)\n\\(\\beta_0 + \\beta_1\\)\n\\(\\beta_2+\\beta_3\\)\n\n\n(b) Control\n\\(\\beta_0 + \\beta_2\\)\n\\(\\beta_0\\)\n\\(\\beta_2\\)\n\n\n(a) - (b)\n\\(\\beta_1+\\beta_3\\)\n\\(\\beta_1\\)\n\\(\\beta_3\\)\n\n\n\nA typical DiD regression looks like this\n\\[Y = \\beta_0 + \\beta_1 Treated + \\beta_2 After + \\beta_3 Treated \\times After + \\epsilon\\]\n\nThe difference-in-differences regression gives you the same estimate as if you took differences in the group averages\nIt takes also care of any unobserved constant differences between subjects and time trends!"
   },
   {
     "objectID": "lectures/lecture_4.html#difference-in-differences-did-6",
     "href": "lectures/lecture_4.html#difference-in-differences-did-6",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "Difference-in-Differences (DiD)",
-    "text": "Difference-in-Differences (DiD)\nCanonical DiD model - The two-by-two design\nThe two-by-two set-up\n\n\n\n\n\n\n\n\n\n\n(1) After\n(2) Before\n(1) - (2)\n\n\n\n\n(a) Treatment\n\\(\\beta_0 + \\beta_1+\\beta_2+\\beta_3\\)\n\\(\\beta_0 + \\beta_1\\)\n\\(\\beta_2+\\beta_3\\)\n\n\n(b) Control\n\\(\\beta_0 + \\beta_2\\)\n\\(\\beta_0\\)\n\\(\\beta_2\\)\n\n\n(a) - (b)\n\\(\\beta_1+\\beta_3\\)\n\\(\\beta_1\\)\n\\(\\beta_3\\)\n\n\n\nA typical DiD regression looks like this\n\\[Y = \\beta_0 + \\beta_1 Treated + \\beta_2 After + \\beta_3 Treated \\times After + \\epsilon\\]\n\nThe difference-in-differences regression gives you the same estimate as if you took differences in the group averages\nIt takes also care of any unobserved constant differences between subjects and time trends!"
+    "text": "Difference-in-Differences (DiD)\nCanonical DiD model - The two-by-two design\nExample data summary\n\n\nSame variables as in previous lecture, but now panel data with multiple observations per student\nTreatment assigned at the course level (some instructors allow LLM use, others ban it)\nData contains two periods: pre-LLM (before) and post-LLM (after), each consisting of two exam scores per student\nThe unit of analysis is the student-time level\nThe key variables are:\n\ntreated: Indicator for whether the course allows LLM use (1 = yes, 0 = no)\nafter: Indicator for whether the observation is from the post-LLM period (1 = after, 0 = before)\nexam_score: The student’s exam score"
   },
   {
     "objectID": "lectures/lecture_4.html#difference-in-differences-did-7",
     "href": "lectures/lecture_4.html#difference-in-differences-did-7",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "Difference-in-Differences (DiD)",
-    "text": "Difference-in-Differences (DiD)\nCanonical DiD model - The two-by-two design\nExample data summary\n\n\nSame variables as in previous lecture, but now panel data with multiple observations per student\nTreatment assigned at the course level (some instructors allow LLM use, others ban it)\nData contains two periods: pre-LLM (before) and post-LLM (after), each consisting of two exam scores per student\nThe unit of analysis is the student-time level\nThe key variables are:\n\ntreated: Indicator for whether the course allows LLM use (1 = yes, 0 = no)\nafter: Indicator for whether the observation is from the post-LLM period (1 = after, 0 = before)\nexam_score: The student’s exam score"
+    "text": "Difference-in-Differences (DiD)\nCanonical DiD model - The two-by-two design\n\n\nComparing means\n\n\n\n\n\n\nAfter\nBefore\nDifference\n\n\n\n\nTreated group\n6.57\n7.12\n-0.55\n\n\nControl group\n7.42\n7.22\n0.20\n\n\nDifference\n-0.85\n-0.10\n-0.75\n\n\n\n\n\n\nEstimation"
   },
   {
     "objectID": "lectures/lecture_4.html#difference-in-differences-did-8",
     "href": "lectures/lecture_4.html#difference-in-differences-did-8",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "Difference-in-Differences (DiD)",
-    "text": "Difference-in-Differences (DiD)\nCanonical DiD model - The two-by-two design\n\n\nComparing means\n\n\n\n\n\n\nAfter\nBefore\nDifference\n\n\n\n\nTreated group\n6.57\n7.12\n-0.55\n\n\nControl group\n7.42\n7.22\n0.20\n\n\nDifference\n-0.85\n-0.10\n-0.75\n\n\n\n\n\n\nEstimation"
+    "text": "Difference-in-Differences (DiD)\nTwo-way fixed effects (TWFE)\nCanonical: \\(Y = \\underbrace{\\beta_0 + \\beta_1 Treated}_{\\alpha_i} + \\underbrace{\\beta_2 After}_{\\alpha_t} + \\beta_3 Treated \\times After + \\epsilon\\)\nTWFE: \\(Y = \\alpha_i + \\alpha_t + \\beta_{DiD}\\ Treated \\times After + \\epsilon\\)\n\n\nWhat is absorbed by fixed effects?\n\n\\(\\beta_0\\) is absorbed into the individual fixed effects \\(\\alpha_i\\) — every unit gets its own intercept\n\\(\\beta_1\\) disappears - time-invariant differences are absorbed by individual fixed effects\n\\(\\beta_2\\) disappears - time fixed effects capture common shocks over time\n\n\nWhy use fixed effects?\n\nControls for unobserved heterogeneity across individuals and over time\nFocuses on within-individual variation to identify treatment effects\nMore robust to omitted variable bias from time-invariant confounders"
   },
   {
     "objectID": "lectures/lecture_4.html#difference-in-differences-did-.smaller",
     "href": "lectures/lecture_4.html#difference-in-differences-did-.smaller",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "Difference-in-Differences (DiD) .{smaller}",
-    "text": "Difference-in-Differences (DiD) .{smaller}\n2-way fixed effects\n\\[Y = \\alpha_i + \\alpha_t + \\beta_3 Treated \\times After + \\epsilon\\]\n\n\nWhat is absorbed by fixed effects?\n\n\\(\\beta_0\\) disappears - not meaningful in panel data with fixed effects\n\\(\\beta_1\\) disappears - time-invariant differences are absorbed by individual fixed effects\n\\(\\beta_2\\) disappears - time fixed effects capture common shocks over time\n\n\nWhy use fixed effects?\n\nControls for unobserved heterogeneity across individuals and over time\nFocuses on within-individual variation to identify treatment effects\nMore robust to omitted variable bias from time-invariant confounders"
+    "text": "Difference-in-Differences (DiD) .{smaller}\n2-way fixed effects\nCanonical: \\(Y = \\underbrace{\\beta_0 + \\beta_1 Treated}_{\\alpha_i} + \\underbrace{\\beta_2 After}_{\\alpha_t} + \\beta_3 Treated \\times After + \\epsilon\\)\n2WFE: \\(Y = \\alpha_i + \\alpha_t + \\beta_{DiD}\\ Treated \\times After + \\epsilon\\)\n\n\nWhat is absorbed by fixed effects?\n\n\\(\\beta_0\\) is absorbed into the individual fixed effects \\(\\alpha_i\\) — every unit gets its own intercept\n\\(\\beta_1\\) disappears - time-invariant differences are absorbed by individual fixed effects\n\\(\\beta_2\\) disappears - time fixed effects capture common shocks over time\n\n\nWhy use fixed effects?\n\nControls for unobserved heterogeneity across individuals and over time\nFocuses on within-individual variation to identify treatment effects\nMore robust to omitted variable bias from time-invariant confounders"
   },
   {
     "objectID": "lectures/lecture_4.html#difference-in-differences-did-9",
     "href": "lectures/lecture_4.html#difference-in-differences-did-9",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "Difference-in-Differences (DiD)",
-    "text": "Difference-in-Differences (DiD)\n2-way fixed effects\n\n\n\nEstimation with fixed effects\n\n\n\n\nWhat changes with fixed effects?\n\nThe DiD estimate remains similar, indicating robustness to fixed effects\nControls for unobserved individual heterogeneity and time effects\nTime-invariant confounders are addressed (ability drops out!)\nParallel Trends\nBut what about standard errors?\n\n\n\n\n\nFor an exellent deep-dive into fixed effects, see e.g. Breuer and DeHaan (2024) or Verbeek (2021)"
+    "text": "Difference-in-Differences (DiD)\nTwo-way fixed effects\n\n\n\nEstimation with fixed effects\n\n\n\n\nWhat changes with fixed effects?\n\nThe DiD estimate remains similar, indicating robustness to fixed effects\nControls for unobserved individual heterogeneity and time effects\nTime-invariant confounders are addressed — ability drops out automatically because it is constant per student and is fully absorbed by the student fixed effect\nParallel Trends\nBut what about standard errors?\n\n\n\n\n\nFor an excellent deep-dive into fixed effects, see e.g. Breuer and DeHaan (2024) or Verbeek (2021)"
   },
   {
     "objectID": "lectures/lecture_4.html#difference-in-differences-did-10",
     "href": "lectures/lecture_4.html#difference-in-differences-did-10",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "Difference-in-Differences (DiD)",
-    "text": "Difference-in-Differences (DiD)\n2-way fixed effects\nWhat do fixed effects do?\n(gormley2013commo?)\nEconomic magnitude\nLiu and Winegar (2025)"
+    "text": "Difference-in-Differences (DiD)\nTwo-way fixed effects (TWFE)\nUnder the Hood: What do fixed effects actually do?\n\nAny time-invariant characteristic that cannot be observed in the data \\(=\\) fixed effect \nFixed effects only use within-unit variation over time — all cross-sectional differences between units are swept away. This is why time-invariant variables like ability and female drop out automatically: once you subtract each student’s own mean, a constant value cancels out completely\nUse with caution! Do not fix effect away what you want to measure (e.g. do not use firm FE if your research question is about cross-sectional variation across firms) \n\n\nFixed effects solve endogeneity from time-invariant omitted variables. They do not solve endogeneity from time-varying confounders — if something unobserved changes over time and also affects both treatment and outcome, fixed effects won’t help. This is exactly what the parallel trends assumption guards against in DiD."
   },
   {
     "objectID": "lectures/lecture_4.html#difference-in-differences-did-11",
     "href": "lectures/lecture_4.html#difference-in-differences-did-11",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "Difference-in-Differences (DiD)",
-    "text": "Difference-in-Differences (DiD)\nStandard errors\n\n\n\n\n\n\nWhy do standard errors matter?\n\n\n\nStandard errors quantify the uncertainty around our estimates\nIncorrect standard errors can lead to misleading conclusions about statistical significance\n\n\n\n\nWhat can go wrong?\n\nHeteroskedasticity: If the variance of errors is not constant, standard errors may be biased (lecture 3)\n\nUse robust standard errors to account for heteroskedasticity\n\nAutocorrelation: In DiD settings, errors may be correlated over time within groups, which can also lead to underestimated standard errors if not addressed\n\nUse Newey-West or block bootstrap methods to adjust for serial correlation (in DiD settings)\n\nClustering: If treatment is assigned at a group level (e.g., course level), outcomes within groups may be correlated, leading to underestimated standard errors if not accounted for (Moulton problem, see @)"
+    "text": "Difference-in-Differences (DiD)\nEconomic magnitude and Fixed Effects\nWhy does this matter?\n\nHow to calculate economic magnitudes, e.g. \\[\\text{Economic Magnitude} = \\beta \\times \\sigma_X\\]\nIf \\(\\beta\\) is identified using only within-group variation, then \\(\\sigma_X\\) should reflect the variation that was actually used for identification — i.e. the within-group standard deviation, not the raw sample standard deviation that includes between-group variation that was purged by the FE\nThe Mismatch: Using raw variation as a counterfactual implies a change that the regression model itself never “saw” or used for identification\n\n\n\n\nSee Liu and Winegar (2025) and Breuer and DeHaan (2024) for a detailed discussion of this issue and practical recommendations for how to properly characterize economic magnitudes in FE models."
   },
   {
     "objectID": "lectures/lecture_4.html#difference-in-differences-did-12",
     "href": "lectures/lecture_4.html#difference-in-differences-did-12",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "Difference-in-Differences (DiD)",
-    "text": "Difference-in-Differences (DiD)\nClustered standard errors\n\nIgnoring clustering when treatment is assigned at a group level (e.g., course level) can lead to underestimated standard errors and inflated significance levels (Moulton problem) - In DiD settings, failing to account for serial correlation in errors can also lead to underestimated standard errors\n\nWhen and how to adjust standard errors?\n\nCluster standard errors at the level of treatment assignment (e.g., course level) to account for within-group correlation - Use robust standard errors to account for heteroskedasticity\nConsider using methods that adjust for serial correlation in DiD settings, such as Newey-West or block bootstrap methods\n\n\n\nSee also Cameron and Miller (2015) for a practical guide on when and how to cluster standard errors, and Moulton (1990) for the original discussion of the Moulton problem."
+    "text": "Difference-in-Differences (DiD)\nEconomic magnitude and Fixed Effects\nThe Issue of Inflation and Extrapolation\n\nOverstated Effects: The sample standard deviation is often two to three times larger than the within-group variation that actually identifies the coefficient.\nExtrapolation Bias: Characterizing a “one-standard-deviation” increase based on raw data often represents an unrealistically large change that rarely occurs within a single firm or group.\nModeling Assumptions: Such large counterfactual changes rely heavily on linearity assumptions that may not be testable or defensible for changes that are significantly larger than common variation in the data."
   },
   {
     "objectID": "lectures/lecture_4.html#difference-in-differences-did-13",
     "href": "lectures/lecture_4.html#difference-in-differences-did-13",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "Difference-in-Differences (DiD)",
-    "text": "Difference-in-Differences (DiD)\nStandard errors\nExample: DiLLMa\n\nTreatment is assigned at the course level, but we have multiple students per course -\nOutcomes of students within the same course are likely correlated (e.g., due to shared instructor, materials, peer effects)\nIf we ignore this clustering and use standard errors that assume independence, we will underestimate the true variability of our estimates\nThis can lead to falsely concluding that the treatment effect is statistically significant when it may not be (Type I error)"
+    "text": "Difference-in-Differences (DiD)\nEconomic magnitude and Fixed Effects\nIdentifying the “Effective” Variation\n\nSingleton & No-Variation Groups: FE can “mask” the effective sample. Observations in groups with only one entry (singletons) or zero variation in \\(X\\) do not contribute to the coefficient estimate\nShrunken Distributions: After residualizing variables to FE, the remaining variation is much more narrowly distributed\nDistorted Unit of Change: Because FE regressions focus on predicted changes in \\(Y\\) in response to deviations from a group’s mean, the raw standard deviation is no longer a meaningful unit for characterizing the magnitude of the effect"
   },
   {
     "objectID": "lectures/lecture_4.html#difference-in-differences-did-14",
     "href": "lectures/lecture_4.html#difference-in-differences-did-14",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "Difference-in-Differences (DiD)",
-    "text": "Difference-in-Differences (DiD)\nStandard errors\n\n\nExample: DiLLMa with clustering\n\n\n\n\nWhat changes with clustering?\n\nStandard errors increase when clustering by course, reflecting the within-course correlation of outcomes\nNo change in point estimates, but the statistical significance of the treatment effect may change (e.g., from significant to non-significant)"
+    "text": "Difference-in-Differences (DiD)\nEconomic magnitude and Fixed Effects\nWhat to do about it?\n\nUse Within-Group Scaling: Researchers should characterize economic magnitudes using thewithin-group standard deviation of the independent variable.\nReport W-S Ratios: Supplement raw descriptive statistics with standard deviations of variables residualized to the FE to show how much variation was purged.\nValidate Counterfactuals: Report the frequency of the proposed counterfactual move. If a “one-standard-deviation” move happens less than 10% of the time within a group, it may be a “extreme counterfactual” .\nWithin-\\(R^2\\): Supplement the total \\(R^2\\) with a “within-\\(R^2\\)” to show how much power comes from the variables of interest versus the FE themselves.\n\n\n\nFor the Stata implementation see Ed deHann’s Github - sumhdfe"
   },
   {
     "objectID": "lectures/lecture_4.html#difference-in-differences-did-15",
     "href": "lectures/lecture_4.html#difference-in-differences-did-15",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "Difference-in-Differences (DiD)",
-    "text": "Difference-in-Differences (DiD)\nTakeaways so far\n\nDiD leverages both cross-sectional and time-series variation to identify causal effects (ATT)\nThe canonical DiD model can be extended with fixed effects to control for time-invariant heterogeneity\nThe parallel trends assumption is crucial for valid DiD inference\nProper standard error adjustments are essential for accurate inference in DiD settings\nIs that all? Not quite…\n\n\n\n\n\n\n\nLimitations\n\n\nLimitations arise in rollout (staggered) designs, where treatment timing varies across groups; TWFE can perform poorly in such settings (to be discussed later)."
+    "text": "Difference-in-Differences (DiD)\nStandard errors\n\n\n\n\n\n\nWhy do standard errors matter?\n\n\n\nStandard errors quantify the uncertainty around our estimates\nIncorrect standard errors can lead to misleading conclusions about statistical significance\n\n\n\n\nWhat can go wrong? — Classic issues\n\nHeteroskedasticity: If the variance of errors is not constant, standard errors may be biased (lecture 3)\n\nUse robust standard errors to account for heteroskedasticity\n\nAutocorrelation: In DiD settings, errors may be correlated over time within groups, which can also lead to underestimated standard errors if not addressed\n\nUse Newey-West or block bootstrap methods to adjust for serial correlation (in DiD settings)"
   },
   {
     "objectID": "lectures/lecture_4.html#references",
     "href": "lectures/lecture_4.html#references",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "References",
-    "text": "References\n\n\nBreuer, Matthias, and ED DeHaan. 2024. “Using and Interpreting Fixed Effects Models.” Journal of Accounting Research 62 (4): 1183–1226.\n\n\nCameron, A Colin, and Douglas L Miller. 2015. “A Practitioner’s Guide to Cluster-Robust Inference.” Journal of Human Resources 50 (2): 317–72.\n\n\nCinelli, Carlos, Andrew Forney, and Judea Pearl. 2024. “A Crash Course in Good and Bad Controls.” Sociological Methods & Research 53 (3): 1071–1104.\n\n\nHuntington-Klein, Nick. 2022. The Effect: An Introduction to Research Design and Causality. 2nd ed. Chapman; Hall/CRC.\n\n\nLiu, Zack, and Adam Winegar. 2025. “Economic Magnitudes Within Reason.” Journal of Corporate Finance 83: 102707. https://doi.org/10.1016/j.jcorpfin.2024.102707.\n\n\nMoulton, Brent R. 1990. “An Illustration of a Pitfall in Estimating the Effects of Aggregate Variables on Micro Units.” The Review of Economics and Statistics, 334–38.\n\n\nVerbeek, Marno. 2021. Panel Methods for Finance: A Guide to Panel Data Econometrics for Financial Applications. De Gruyter."
+    "text": "References\n\n\nAbouk, Rahi, and Scott Adams. 2013. “Texting Bans and Fatal Accidents on Roadways: Do They Work? Or Do Drivers Just React to Announcements of Bans?” American Economic Journal: Applied Economics 5 (2): 179–99.\n\n\nBaker, Andrew C, David F Larcker, and Charles CY Wang. 2022. “How Much Should We Trust Staggered Difference-in-Differences Estimates?” Journal of Financial Economics 144 (2): 370–95.\n\n\nBorusyak, Kirill, Xavier Jaravel, and Jann Spiess. 2024. “Revisiting Event-Study Designs: Robust and Efficient Estimation.” Review of Economic Studies 91 (6): 3253–85.\n\n\nBreuer, Matthias, and ED DeHaan. 2024. “Using and Interpreting Fixed Effects Models.” Journal of Accounting Research 62 (4): 1183–1226.\n\n\nCallaway, Brantly, and Pedro HC Sant’Anna. 2021. “Difference-in-Differences with Multiple Time Periods.” Journal of Econometrics 225 (2): 200–230.\n\n\nCameron, A Colin, and Douglas L Miller. 2015. “A Practitioner’s Guide to Cluster-Robust Inference.” Journal of Human Resources 50 (2): 317–72.\n\n\nCengiz, Doruk, Arindrajit Dube, Attila Lindner, and Ben Zipperer. 2019. “The Effect of Minimum Wages on Low-Wage Jobs.” The Quarterly Journal of Economics 134 (3): 1405–54.\n\n\nChaisemartin, Clément de, and Xavier D’Haultfœuille. 2023. “Credible Answers to Hard Questions: Differences-in-Differences for Natural Experiments.” Available at SSRN 4487202.\n\n\nCinelli, Carlos, Andrew Forney, and Judea Pearl. 2024. “A Crash Course in Good and Bad Controls.” Sociological Methods & Research 53 (3): 1071–1104.\n\n\nGoodman-Bacon, Andrew. 2021. “Difference-in-Differences with Variation in Treatment Timing.” Journal of Econometrics 225 (2): 254–77.\n\n\nGormley, Todd A, and David A Matsa. 2011. “Growing Out of Trouble? Corporate Responses to Liability Risk.” The Review of Financial Studies 24 (8): 2781–821.\n\n\nHuntington-Klein, Nick. 2022. The Effect: An Introduction to Research Design and Causality. 2nd ed. Chapman; Hall/CRC.\n\n\nLiu, Zack, and Adam Winegar. 2025. “Economic Magnitudes Within Reason.” Journal of Corporate Finance 83: 102707. https://doi.org/10.1016/j.jcorpfin.2024.102707.\n\n\nMoulton, Brent R. 1990. “An Illustration of a Pitfall in Estimating the Effects of Aggregate Variables on Micro Units.” The Review of Economics and Statistics, 334–38.\n\n\nSun, Liyang, and Sarah Abraham. 2021. “Estimating Dynamic Treatment Effects in Event Studies with Heterogeneous Treatment Effects.” Journal of Econometrics 225 (2): 175–99.\n\n\nVerbeek, Marno. 2021. Panel Methods for Finance: A Guide to Panel Data Econometrics for Financial Applications. De Gruyter."
   },
   {
     "objectID": "lectures/lecture_6.html#overview",
@@ -1558,35 +1558,35 @@
     "href": "lectures/lecture_4.html#what-to-do-if-random-assignment-is-not-possible-2",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "What to do if random assignment is not possible?",
-    "text": "What to do if random assignment is not possible?\nBuilding the OLS model\n\n\nFrom Huntington-Klein (2022) chapter 13\n\n\nLet’s build the OLS model for DiLLMa\n\nOpen paths between treated and exam_score:\n\nability (confounder)\nstudy_hours (mediator)\nattendance_rate (mediator)\nage (confounder)\nfemale (confounder) \n\nShould effect differ, e.g. for high vs low study hours?\n\nIncludeinteraction term to test for heterogeneous effects"
+    "text": "What to do if random assignment is not possible?\nBuilding the OLS model\n\n\nFrom Huntington-Klein (2022) chapter 13\n\n\nLet’s build the OLS model for DiLLMa\n\nOpen paths between treated and exam_score:\n\nability (confounder)\nstudy_hours (mediator)\nattendance_rate (mediator)\nage (confounder)\ngender (confounder) \n\nShould effect differ, e.g. for high vs low study hours?\n\nIncludeinteraction term to test for heterogeneous effects"
   },
   {
     "objectID": "lectures/lecture_4.html#difference-in-differences-did-16",
     "href": "lectures/lecture_4.html#difference-in-differences-did-16",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "Difference-in-Differences (DiD)",
-    "text": "Difference-in-Differences (DiD)\nStandard errors in DiD - Issues"
+    "text": "Difference-in-Differences (DiD)\nStandard errors\nWhat can go wrong? — Clustering\n\nClustering: If treatment is assigned at a group level (e.g., course level), outcomes within groups may be correlated, leading to underestimated standard errors if not accounted for (Moulton problem, see Moulton (1990))\n\nWhen and how to adjust standard errors?\n\nCluster standard errors at the level of treatment assignment (e.g., course level) to account for within-group correlation\nUse robust standard errors to account for heteroskedasticity\nBe cautious with a small number of clusters (less than ~30), as standard errors may still be biased; consider using wild cluster bootstrap methods in such cases\n\n\n\nSee also Cameron and Miller (2015) for a practical guide on when and how to cluster standard errors, and Moulton (1990) for the original discussion of the Moulton problem."
   },
   {
     "objectID": "lectures/lecture_4.html#difference-in-differences-did-17",
     "href": "lectures/lecture_4.html#difference-in-differences-did-17",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "Difference-in-Differences (DiD)",
-    "text": "Difference-in-Differences (DiD)\nStandard errors in DiD - A new hope"
+    "text": "Difference-in-Differences (DiD)\nStandard errors\nExample: DiLLMa\n\nTreatment is assigned at the course level, but we have multiple students per course\nOutcomes of students within the same course are likely correlated (e.g., due to shared instructor, materials, peer effects)\nIf we ignore this clustering and use standard errors that assume independence, we will underestimate the true variability of our estimates\nThis can lead to falsely concluding that the treatment effect is statistically significant when it may not be (Type I error)"
   },
   {
     "objectID": "lectures/lecture_4.html#difference-in-differences-did-18",
     "href": "lectures/lecture_4.html#difference-in-differences-did-18",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "Difference-in-Differences (DiD)",
-    "text": "Difference-in-Differences (DiD)\nBeyond your MSc repliciation - Your contribution\nNew approaches\nHow to learn about the new approaches?\n(baker2022difference?)\nHow to learn about applicating them?\n\nA way to extend your MSc replication project is to apply some of the new DiD methods to the DiLLMa dataset and compare the results with the traditional TWFE approach."
+    "text": "Difference-in-Differences (DiD)\nStandard errors\n\n\nExample: DiLLMa with clustering\n\n\n\n\nWhat changes with clustering?\n\nStandard errors increase when clustering by course, reflecting the within-course correlation of outcomes\nNo change in point estimates, but the statistical significance of the treatment effect may change (e.g., from significant to non-significant)"
   },
   {
     "objectID": "lectures/lecture_4.html#difference-in-differences-did-19",
     "href": "lectures/lecture_4.html#difference-in-differences-did-19",
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "Difference-in-Differences (DiD)",
-    "text": "Difference-in-Differences (DiD)\nIdentification\nParallel trends assumption\n\n\nUnconditional means\n\n\n\n\n\n\n\n\n\n\nEvent study approach\n\n\n\n\n\n\n\n\nThe parallel trends assumption states that, in the absence of treatment, the average change in the outcome variable would have been the same for both the treatment and control groups. Back"
+    "text": "Difference-in-Differences (DiD)\nStandard errors\nKey takeaways on standard errors in DiD settings\n\nAlways use robust standard errors (solves heteroskedasticity issues)\nRule of thumb I: Cluster at the level of the treatment/``shock’’, e.g. treatment is on state-level (new law) \\(\\Rightarrow\\) cluster standard errors at state\nBe careful: Less than \\(\\approx\\) 30 clusters makes standard errors too small\nRule of thumb II: Check robustness of different cluster methods \\(\\Rightarrow\\) report most conservative one"
   },
   {
     "objectID": "lectures/lecture_3.html#dillma-6",
@@ -1594,5 +1594,131 @@
     "title": "Regressions and Identification",
     "section": "DiLLMa",
     "text": "DiLLMa\nThe Sign-Flip Phenomenon\n\n\n\n\n\n\nCritical insight\n\n\nOmitted variable bias doesn’t just make estimates imprecise—it can completely flip the sign of your estimate!\n\n\n\nIn our example:\n\nTrue effect of LLM use: Negative (LLMs hurt learning)\nNaive estimate: Positive (because high-ability students use LLMs)\nBias: Positive (ability is positively correlated with both LLM use and exam scores)\n\nThe formula (intuition):\n\\[\\text{Naive estimate} = \\text{True effect} + \\text{Bias}\\] \\[\\text{Positive} = \\text{Negative} + \\text{(Large) Positive}\\]"
+  },
+  {
+    "objectID": "lectures/lecture_4.html#difference-in-differences-did-20",
+    "href": "lectures/lecture_4.html#difference-in-differences-did-20",
+    "title": "De Do Do Do, De Di i Di - Panel Data Methods",
+    "section": "Difference-in-Differences (DiD)",
+    "text": "Difference-in-Differences (DiD)\nTakeaways so far\n\nDiD leverages both cross-sectional and time-series variation to identify causal effects (ATT)\nThe canonical DiD model can be extended with fixed effects to control for time-invariant heterogeneity\nThe parallel trends assumption is crucial for valid DiD inference\nProper standard error adjustments are essential for accurate inference in DiD settings\nIs that all? Not quite…\n\n\n\n\n\n\n\nLimitations\n\n\nLimitations arise in rollout (staggered) designs, where treatment timing varies across groups; TWFE can perform poorly in such settings…"
+  },
+  {
+    "objectID": "lectures/lecture_4.html#difference-in-differences-did-21",
+    "href": "lectures/lecture_4.html#difference-in-differences-did-21",
+    "title": "De Do Do Do, De Di i Di - Panel Data Methods",
+    "section": "Difference-in-Differences (DiD)",
+    "text": "Difference-in-Differences (DiD)\nStaggered adoption — The problem\nThe canonical DiD assumes a clean 2×2 world\n\n\n\n\nBefore\nAfter\n\n\n\n\nTreated\n✓\n✓\n\n\nControl\n✓\n✓\n\n\n\n\n\n\n\n\n\n\nStaggered (rollout) DiD\n\n\nWhen units receive treatment at different points in time, we call this a staggered adoption or rollout design. This is extremely common in finance and economics research.\n\n\n\n\n\nDiLLMa analogy: Imagine LLM tools became available in some courses in semester 1, others in semester 3, and others never — the 2×2 structure breaks down."
+  },
+  {
+    "objectID": "lectures/lecture_4.html#difference-in-differences-did-22",
+    "href": "lectures/lecture_4.html#difference-in-differences-did-22",
+    "title": "De Do Do Do, De Di i Di - Panel Data Methods",
+    "section": "Difference-in-Differences (DiD)",
+    "text": "Difference-in-Differences (DiD)\nStaggered adoption — Why TWFE can go wrong\nThe standard Two-Way Fixed Effects (TWFE) estimator implicitly uses all available 2×2 comparisons, including some you probably don’t want:\n\n\nGoodman-Bacon decomposition\n\n\n\nGoodman-Bacon (2021)\n\n\n\nThe “forbidden comparison” problem\n\nEarly-treated vs. never-treated ✓ Clean comparison\nLate-treated vs. never-treated ✓ Clean comparison\nEarly-treated vs. late-treated ⚠️ The already-treated group acts as a “control” — but they’ve already been treated!"
+  },
+  {
+    "objectID": "lectures/lecture_4.html#difference-in-differences-did-23",
+    "href": "lectures/lecture_4.html#difference-in-differences-did-23",
+    "title": "De Do Do Do, De Di i Di - Panel Data Methods",
+    "section": "Difference-in-Differences (DiD)",
+    "text": "Difference-in-Differences (DiD)\nStaggered adoption — Recent solutions (high-level)\nNew approaches share a common idea: only compare treated units to clean controls \n\n\n\n\n\n\n\n\n\nApproach\nKey idea\nReference\n\n\n\n\nCallaway & Sant’Anna\nEstimate separate ATTs for each (group, time) cell, then aggregate\nCallaway and Sant’Anna (2021)\n\n\nSun & Abraham\nInteraction-weighted estimator; heterogeneity-robust\nSun and Abraham (2021)\n\n\nBorusyak, Jaravel & Spiess\nImputation-based; efficient\nBorusyak, Jaravel, and Spiess (2024)\n\n\nStacked DiD\nManually construct clean 2×2 datasets and stack them\nCengiz et al. (2019) and Gormley and Matsa (2011)"
+  },
+  {
+    "objectID": "lectures/lecture_4.html#difference-in-differences-did-24",
+    "href": "lectures/lecture_4.html#difference-in-differences-did-24",
+    "title": "De Do Do Do, De Di i Di - Panel Data Methods",
+    "section": "Difference-in-Differences (DiD)",
+    "text": "Difference-in-Differences (DiD)\nStaggered adoption — Practical guidance\nRule of thumb\n\nIf your setting is a clean 2×2 (one treatment date, one treated group): standard TWFE is fine\nIf your setting has staggered rollout: check for and report the Goodman-Bacon decomposition to understand how much your estimate is driven by “forbidden” comparisons\nIf heterogeneous effects are plausible (they usually are): use Callaway-Sant’Anna or Sun-Abraham as robustness\n\n\n\nFor an accessible survey of the new methods, see Baker, Larcker, and Wang (2022) — a practitioner-friendly overview."
+  },
+  {
+    "objectID": "lectures/lecture_4.html#difference-in-differences-did-25",
+    "href": "lectures/lecture_4.html#difference-in-differences-did-25",
+    "title": "De Do Do Do, De Di i Di - Panel Data Methods",
+    "section": "Difference-in-Differences (DiD)",
+    "text": "Difference-in-Differences (DiD)\nBeyond your MSc replication\nNew approaches\nHow to learn about the new approaches?\n\nSee e.g. Asjad Naqvi’s Github repository that provides code and resources for implementing the new DiD methods or Youtube lectures by the original authors\nCheck the papers by Callaway and Sant’Anna (2021), Sun and Abraham (2021), Borusyak, Jaravel, and Spiess (2024), and Cengiz et al. (2019)\nGo beyond the literature in this course, e.g. Chaisemartin and D’Haultfœuille (2023)\n\nWhy should you care about the new approaches?\n\nA way to extend your MSc replication project is to apply some of the new DiD methods to your data and compare the results to the standard TWFE approach. This can provide insights into the robustness of your findings and demonstrate your ability to apply cutting-edge econometric techniques."
+  },
+  {
+    "objectID": "lectures/lecture_4.html#control-variables-in-regression-analysis-5",
+    "href": "lectures/lecture_4.html#control-variables-in-regression-analysis-5",
+    "title": "De Do Do Do, De Di i Di - Panel Data Methods",
+    "section": "Control Variables in Regression Analysis",
+    "text": "Control Variables in Regression Analysis\nBad controls — Collider: DiLLMa example\n\n\nThe collider\n\nX: Student chooses to use an LLM\nY: Exam score\nZ (collider): Tutoring referral\n\nTwo independent causes push students into tutoring:\n\nLLM over-reliance — the instructor flags heavy LLM users out of concern they are not developing their own skills\nPoor exam performance — students with low scores are referred regardless of LLM use\n\n\nWhat goes wrong if you condition on Z?\nSuppose you study only students who were referred to tutoring. Within this group:\n\nNon-LLM users were referred because they performed badly\nLLM users were referred because of tool concern, not necessarily bad scores\n\nResult: LLM users look artificially less bad among referred students. You find a spurious positive association between LLM use and exam scores in this sub-sample — a phantom that disappears once you look at all students.\n\n\n\n\n\n\nThis is selection bias in disguise\n\n\nRestricting the sample to referred students conditions on the collider Z, opening the backdoor path X ← Z → Y and distorting the true LLM–score relationship."
+  },
+  {
+    "objectID": "lectures/lecture_4.html#difference-in-differences-did-26",
+    "href": "lectures/lecture_4.html#difference-in-differences-did-26",
+    "title": "De Do Do Do, De Di i Di - Panel Data Methods",
+    "section": "Difference-in-Differences (DiD)",
+    "text": "Difference-in-Differences (DiD)\nParallel trends assumption\n\n\nUnconditional means\n\n\n\n\n\n\n\n\n\n\nEvent study approach\n\n\n\n\n\n\n\n\nThe parallel trends assumption states that, in the absence of treatment, the average change in the outcome variable would have been the same for both the treatment and control groups. Back"
+  },
+  {
+    "objectID": "lectures/lecture_4.html#difference-in-differences-did-27",
+    "href": "lectures/lecture_4.html#difference-in-differences-did-27",
+    "title": "De Do Do Do, De Di i Di - Panel Data Methods",
+    "section": "Difference-in-Differences (DiD)",
+    "text": "Difference-in-Differences (DiD)\nBacon decomposition - Infographic\n\nBack"
+  },
+  {
+    "objectID": "lectures/lecture_4.html#difference-in-differences-did-28",
+    "href": "lectures/lecture_4.html#difference-in-differences-did-28",
+    "title": "De Do Do Do, De Di i Di - Panel Data Methods",
+    "section": "Difference-in-Differences (DiD)",
+    "text": "Difference-in-Differences (DiD)\nBacon decomposition - Infographic\n\nBack"
+  },
+  {
+    "objectID": "lectures/lecture_4.html#difference-in-differences-did-29",
+    "href": "lectures/lecture_4.html#difference-in-differences-did-29",
+    "title": "De Do Do Do, De Di i Di - Panel Data Methods",
+    "section": "Difference-in-Differences (DiD)",
+    "text": "Difference-in-Differences (DiD)\nIdentification\nParallel trends assumption\n\n\nUnconditional means\n\n\n\n\n\n\n\n\n\n\nEvent study approach\n\n\n\n\n\n\n\n\nThe parallel trends assumption states that, in the absence of treatment, the average change in the outcome variable would have been the same for both the treatment and control groups. Back"
+  },
+  {
+    "objectID": "lectures/lecture_4.html#control-variables-in-regression-analysis-6",
+    "href": "lectures/lecture_4.html#control-variables-in-regression-analysis-6",
+    "title": "De Do Do Do, De Di i Di - Panel Data Methods",
+    "section": "Control Variables in Regression Analysis",
+    "text": "Control Variables in Regression Analysis\nSummary\n\nGood controls help isolate the causal effect by blocking non-causal paths (confounders)\nBad controls can bias estimates by blocking causal paths (mediators) or opening spurious paths (colliders)\n\n\n\n\n\n\n\nTakeaway: Be deliberate about controls\n\n\nDiD with two-way fixed effects largely sidesteps the confounder problem by absorbing time-invariant differences between units. But mediators remain a live concern — if you control for a variable that lies on the causal path from your treatment to the outcome, you will underestimate the treatment effect."
+  },
+  {
+    "objectID": "lectures/lecture_4.html#difference-in-differences-did-30",
+    "href": "lectures/lecture_4.html#difference-in-differences-did-30",
+    "title": "De Do Do Do, De Di i Di - Panel Data Methods",
+    "section": "Difference-in-Differences (DiD)",
+    "text": "Difference-in-Differences (DiD)\nIdentification\nParallel trends assumption\n\n\nUnconditional means\n\n\n\n\n\n\n\n\n\n\nEvent study approach\n\n\n\n\n\n\n\n\nThe parallel trends assumption states that, in the absence of treatment, the average change in the outcome variable would have been the same for both the treatment and control groups. Back"
+  },
+  {
+    "objectID": "lectures/lecture_4.html#difference-in-differences-did-31",
+    "href": "lectures/lecture_4.html#difference-in-differences-did-31",
+    "title": "De Do Do Do, De Di i Di - Panel Data Methods",
+    "section": "Difference-in-Differences (DiD)",
+    "text": "Difference-in-Differences (DiD)\nIdentification\nParallel trends assumption\n\n\nUnconditional means\n\n\n\n\n\n\n\n\n\n\nEvent study approach\n\n\n\n\n\n\n\n\nThe parallel trends assumption states that, in the absence of treatment, the average change in the outcome variable would have been the same for both the treatment and control groups. Back"
+  },
+  {
+    "objectID": "lectures/lecture_4.html#before-we-start",
+    "href": "lectures/lecture_4.html#before-we-start",
+    "title": "De Do Do Do, De Di i Di - Panel Data Methods",
+    "section": "Before We Start…",
+    "text": "Before We Start…\nAssignment Release and Submission Schedule\n\n\n\n\nAssignment\nRelease\nDeadline\n\n\n\n\nA1\n11.02.2026\n25.02.2026\n\n\nA2\n11.02.2026\n25.02.2026\n\n\nA3\n18.02.2026\n04.03.2026\n\n\nA4\n25.02.2026\n11.03.2026\n\n\nA5\n04.03.2026\nTBA\n\n\nA6\n11.03.2026\nTBA\n\n\n\n\n\n\n\n\n\n\nImportant Note on Assignment Deadlines\n\n\nDeadlines for A5-A6 will be announced in the coming weeks. Please stay tuned for updates and check Canvas regularly if you do not attend lectures."
+  },
+  {
+    "objectID": "lectures/lecture_4.html#stata-example",
+    "href": "lectures/lecture_4.html#stata-example",
+    "title": "De Do Do Do, De Di i Di - Panel Data Methods",
+    "section": "Stata example",
+    "text": "Stata example\nTexting bans and traffic accidents — Background\n\n\nCross-sectional variation\n\n\n\n\n\n\nTemporal variation\n\n\n\n\n\n\n\\[Y_{i,t} = \\gamma_{State} + \\theta_{Month} + \\beta_3Ban_{i} \\times Post_{t} + \\epsilon_{i,t}\\]\n\n\nFor all details, see and read Abouk and Adams (2013)"
+  },
+  {
+    "objectID": "lectures/lecture_4.html#stata-example-1",
+    "href": "lectures/lecture_4.html#stata-example-1",
+    "title": "De Do Do Do, De Di i Di - Panel Data Methods",
+    "section": "Stata example",
+    "text": "Stata example\nTexting bans and traffic accidents — Main results\n\n\nMain results\n\n\n\n\nInterpretation\n\n3.7% reduction of accidents in states after passing the ban compared to states without a ban in place\nStrong ban states: 8.1% reduction in accidents\nWeak ban states: 7.5% increase in accidents"
+  },
+  {
+    "objectID": "lectures/lecture_4.html#bacon",
+    "href": "lectures/lecture_4.html#bacon",
+    "title": "De Do Do Do, De Di i Di - Panel Data Methods",
+    "section": "Difference-in-Differences (DiD)",
+    "text": "Difference-in-Differences (DiD)\nStaggered adoption — The negative weights problem info-pic\n\n\n\n\n\n\nThe negative weights problem\n\n\nWhen treatment effects are heterogeneous, TWFE can assign negative weights to some group-time comparisons. This means TWFE can produce a negative estimate even when every single unit has a positive treatment effect. Goodman-Bacon (2021) decomposed TWFE into its component 2×2 DiDs and showed this explicitly.\n\n\n\nWhy does this happen?\n\nSuppose early-treated firms experience a large initial treatment effect that fades over time.\nTWFE will then use the later period, when the early-treated group’s effect has faded, as a “control” for the late-treated group.\nTWFE interprets the fading as a negative effect — even though the treatment was always positive.\n\nThe problem is not staggered adoption per se — it is staggered adoption combined with treatment effect heterogeneity."
   }
 ]
