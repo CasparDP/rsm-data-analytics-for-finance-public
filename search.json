@@ -44,16 +44,16 @@
   {
     "objectID": "lectures/lecture_5.html#overview",
     "href": "lectures/lecture_5.html#overview",
-    "title": "Event Studies (CAR) and Fama–MacBeth",
+    "title": "Event Studies and Fama–MacBeth",
     "section": "Overview",
-    "text": "Overview"
+    "text": "Overview\nWhere we are in the research pipeline\n\nToday we add two specialized tools for finance research: event studies for measuring market reactions to specific events, and Fama–MacBeth regressions for testing whether firm characteristics systematically predict returns over time."
   },
   {
     "objectID": "lectures/lecture_5.html#overview-1",
     "href": "lectures/lecture_5.html#overview-1",
-    "title": "Event Studies (CAR) and Fama–MacBeth",
+    "title": "Event Studies and Fama–MacBeth",
     "section": "Overview",
-    "text": "Overview\nRecap of previous lecture"
+    "text": "Overview\nToday’s learning objectives\n\nUnderstand the logic of event studies as a causal inference tool for measuring stock price reactions\nDefine estimation and event windows, estimate expected return models, and calculate cumulative abnormal returns (CARs)\nCompare the Market Model and Fama–French 3-Factor Model as benchmarks for expected returns\nUnderstand the Fama–MacBeth two-step procedure for cross-sectional asset pricing tests\nRecognize when to use event studies vs. Fama–MacBeth vs. the panel methods from L4\nAppreciate recent methodological advances connecting event studies to causal inference"
   },
   {
     "objectID": "lectures/lecture_5.html#overview-2",
@@ -72,9 +72,9 @@
   {
     "objectID": "lectures/lecture_5.html#references",
     "href": "lectures/lecture_5.html#references",
-    "title": "Event Studies (CAR) and Fama–MacBeth",
+    "title": "Event Studies and Fama–MacBeth",
     "section": "References",
-    "text": "References"
+    "text": "References\n\n\nAcemoglu, Daron, Simon Johnson, Amir Kermani, James Kwak, and Todd Mitton. 2016. “The Value of Connections in Turbulent Times: Evidence from the United States.” Journal of Financial Economics 121 (2): 368–91.\n\n\nBaker, Andrew C, David F Larcker, and Charles CY Wang. 2022. “How Much Should We Trust Staggered Difference-in-Differences Estimates?” Journal of Financial Economics 144 (2): 370–95.\n\n\nChen, Andrew Y., and Tom Zimmermann. 2022. “Open Source Cross-Sectional Asset Pricing.” Critical Finance Review 27 (2): 207–64.\n\n\nFama, Eugene F. 1970. “Efficient Capital Markets: A Review of Theory and Empirical Work.” The Journal of Finance 25 (2): 383–417.\n\n\nFama, Eugene F, and Kenneth R French. 1993. “Common Risk Factors in the Returns on Stocks and Bonds.” Journal of Financial Economics 33 (1): 3–56.\n\n\nFama, Eugene F, and James D MacBeth. 1973. “Risk, Return, and Equilibrium: Empirical Tests.” Journal of Political Economy 81 (3): 607–36.\n\n\nFeng, Guanhao, Stefano Giglio, and Dacheng Xiu. 2020. “Taming the Factor Zoo: A Test of New Factors.” The Journal of Finance 75 (3): 1327–70.\n\n\nGoldsmith-Pinkham, Paul, and Tianshu Lyu. 2025. “Causal Inference in Financial Event Studies.” https://arxiv.org/abs/2511.15123.\n\n\nHuck, John R. 2024. “The Psychological Externalities of Investing: Evidence from Stock Returns and Crime.” The Review of Financial Studies 37 (7): 2273–2314.\n\n\nKim, Dongcheol. 1995. “The Errors in the Variables Problem in the Cross-Section of Expected Stock Returns.” The Journal of Finance 50 (5): 1605–34.\n\n\nKolari, James W, and Seppo Pynnönen. 2010. “Event Study Testing with Cross-Sectional Correlation of Abnormal Returns.” The Review of Financial Studies 23 (11): 3996–4025.\n\n\nMacKinlay, A Craig. 1997. “Event Studies in Economics and Finance.” Journal of Economic Literature 35 (1): 13–39.\n\n\nPetersen, Mitchell A. 2008. “Estimating Standard Errors in Finance Panel Data Sets: Comparing Approaches.” The Review of Financial Studies 22 (1): 435–80. https://doi.org/10.1093/rfs/hhn053.\n\n\nShanken, Jay. 1992. “On the Estimation of Beta-Pricing Models.” The Review of Financial Studies 5 (1): 1–33.\n\n\nShleifer, Andrei. 1986. “Do Demand Curves for Stocks Slope Down?” The Journal of Finance 41 (3): 579–90."
   },
   {
     "objectID": "lectures/lecture_3.html#regressions-and-identification-1",
@@ -1720,5 +1720,341 @@
     "title": "De Do Do Do, De Di i Di - Panel Data Methods",
     "section": "Difference-in-Differences (DiD)",
     "text": "Difference-in-Differences (DiD)\nStaggered adoption — The negative weights problem info-pic\n\n\n\n\n\n\nThe negative weights problem\n\n\nWhen treatment effects are heterogeneous, TWFE can assign negative weights to some group-time comparisons. This means TWFE can produce a negative estimate even when every single unit has a positive treatment effect. Goodman-Bacon (2021) decomposed TWFE into its component 2×2 DiDs and showed this explicitly.\n\n\n\nWhy does this happen?\n\nSuppose early-treated firms experience a large initial treatment effect that fades over time.\nTWFE will then use the later period, when the early-treated group’s effect has faded, as a “control” for the late-treated group.\nTWFE interprets the fading as a negative effect — even though the treatment was always positive.\n\nThe problem is not staggered adoption per se — it is staggered adoption combined with treatment effect heterogeneity."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#before-we-start",
+    "href": "lectures/lecture_5.html#before-we-start",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Before We Start…",
+    "text": "Before We Start…\nAssignment Release and Submission Schedule\n\n\n\n\nAssignment\nRelease\nDeadline\nGraded\n\n\n\n\nA1\n11.02.2026\n25.02.2026\n\\(\\checkmark\\)\n\n\nA2\n11.02.2026\n25.02.2026\n\\(\\checkmark\\)\n\n\nA3\n18.02.2026\n04.03.2026\n\n\n\nA4\n25.02.2026\n11.03.2026\n\n\n\nA5\n04.03.2026\n18.03.2026\n\n\n\nA6\n11.03.2026\n25.03.2026\n\n\n\n\n\n\n\n\n\n\n\nAssignment 5 Is Out!\n\n\nA5 asks you to implement a full event study on the Dieselgate data. Everything we cover today is directly relevant. Deadline: March 18, 2026."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#from-did-to-event-studies-1",
+    "href": "lectures/lecture_5.html#from-did-to-event-studies-1",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "From DiD to Event Studies",
+    "text": "From DiD to Event Studies\nWhat’s new, what’s familiar\n\n\nWhat you already know (L3–L4)\n\nOLS identifies cross-sectional relationships\nDiD exploits within-group variation over time\nBoth ask: “What would have happened without the treatment?”\nThe parallel trends assumption provides the counterfactual in DiD\n\n\nWhat’s new today\n\nEvent studies ask the same counterfactual question, but at daily frequency and for specific corporate or market events\nThe “counterfactual” is now the expected return from a factor model, not a parallel trend from a control group\nShort event windows (days, not months/years) help with identification"
+  },
+  {
+    "objectID": "lectures/lecture_5.html#from-did-to-event-studies-2",
+    "href": "lectures/lecture_5.html#from-did-to-event-studies-2",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "From DiD to Event Studies",
+    "text": "From DiD to Event Studies\nWhen to use what\n\n\n\n\n\n\n\n\n\n\nMethod\nBest for\nIdentification\nTime scale\n\n\n\n\nOLS (L3)\nCross-sectional relationships\nControls + research design\nCross-section\n\n\nDiD / Panel FE (L4)\nPolicy changes, treatment rollouts\nParallel trends + FE\nMonths–years\n\n\nEvent study (L5)\nMarket reactions to specific events\nMarket efficiency + factor model\nDays\n\n\nFama–MacBeth (L5)\nSystematic return predictability\nRepeated cross-sections\nMonths–years\n\n\n\n\nEach method makes different assumptions to construct the counterfactual. No single method dominates — the right choice depends on the research question and data structure."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#from-did-to-event-studies-3",
+    "href": "lectures/lecture_5.html#from-did-to-event-studies-3",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "From DiD to Event Studies",
+    "text": "From DiD to Event Studies\nWhy event studies work — The efficient market hypothesis\nEvent studies rely on a version of the semi-strong form of market efficiency (Fama 1970):\n\nStock prices quickly incorporate all publicly available information. When new information arrives, prices adjust rapidly — abnormal returns are concentrated in a short window around the event.\n\n\n\n\n\n\n\nIdentification assumption\n\n\nThe event study identification assumption is analogous to parallel trends in DiD. In DiD we assume: absent treatment, treated and control groups would have followed the same trend. In event studies we assume: absent the event, the stock would have earned its expected return from the factor model."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#from-did-to-event-studies-4",
+    "href": "lectures/lecture_5.html#from-did-to-event-studies-4",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "From DiD to Event Studies",
+    "text": "From DiD to Event Studies\nOur research question\n\n“What was the stock market reaction to the Dieselgate scandal announcement on September 18, 2015?”\n\nOn this date, the U.S. Environmental Protection Agency (EPA) issued a Notice of Violation to Volkswagen for using illegal “defeat devices” in diesel engines. The question is whether — and how much — investors punished German automakers relative to non-German competitors.\nRoadmap: Five steps to an event study\n\nDefine the event and time windows\nEstimate a model of expected returns (Market Model or FF3)\nCalculate abnormal returns (AR = actual − expected)\nAggregate abnormal returns into cumulative abnormal returns (CAR)\nTest whether CARs are statistically and economically significant"
+  },
+  {
+    "objectID": "lectures/lecture_5.html#event-study-methodology-1",
+    "href": "lectures/lecture_5.html#event-study-methodology-1",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Event Study Methodology",
+    "text": "Event Study Methodology\nStep 1: Define the event\nEvent date: September 18, 2015\n\nEPA issues Notice of Violation — a public, well-dated, exogenous shock\nThis is what makes Dieselgate a clean event: clear date, public information, limited anticipation\n\nWhat makes a “good” event for event studies?\n\nPrecise timing: The exact date of information arrival is known\nSurprise content: The event contains genuinely new information\nNo confounding events: Other major news does not coincide with the event date\nLimited information leakage: Insider trading or rumours have not pre-empted the announcement\n\n\n\nSee MacKinlay (1997) for the classic treatment of event study design choices."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#event-study-methodology-2",
+    "href": "lectures/lecture_5.html#event-study-methodology-2",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Event Study Methodology",
+    "text": "Event Study Methodology\nStep 1: Define the windows\n\n\n\n\n\nEstimation window [−120, −30]: 91 trading days of “business as usual” returns to estimate the expected return model\nGap [−29, −1]: Buffer to prevent event contamination from leaking into the estimation\nEvent window [0, +5]: Six trading days over which we measure the market reaction\nWhy [0, +5]? The market may take several days to fully incorporate complex information — but longer windows introduce more noise"
+  },
+  {
+    "objectID": "lectures/lecture_5.html#event-study-methodology-3",
+    "href": "lectures/lecture_5.html#event-study-methodology-3",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Event Study Methodology",
+    "text": "Event Study Methodology\nStep 2: The Market Model\nThe simplest expected return model:\n\\[R_{i,t} = \\alpha_i + \\beta_i R_{m,t} + \\varepsilon_{i,t}\\]\n\n\nComponents\n\n\\(R_{i,t}\\): Stock return for firm \\(i\\) on day \\(t\\)\n\\(R_{m,t}\\): Market index return (e.g. DAX for German firms)\n\\(\\alpha_i\\): Firm-specific average return not explained by the market\n\\(\\beta_i\\): Sensitivity to market movements (market beta)\n\\(\\varepsilon_{i,t}\\): Idiosyncratic return — the “surprise”\n\n\nConnection to L3\nThis is just OLS! We regress firm returns on market returns using only the estimation window."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#event-study-methodology-4",
+    "href": "lectures/lecture_5.html#event-study-methodology-4",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Event Study Methodology",
+    "text": "Event Study Methodology\nStep 2: Estimation window — Fitting the model\nWhat happens in the estimation window?\n\nWe estimate \\(\\hat{\\alpha}_i\\) and \\(\\hat{\\beta}_i\\) using OLS on [−120, −30] only\nThese parameters capture the firm’s “normal” relationship with the market\nThe estimation window must be before the event to avoid contamination\n\nIntuition\nIf VW stock typically moves 1.2% for every 1% move in the DAX (\\(\\hat{\\beta} = 1.2\\)), and earns an extra 0.01% per day on average (\\(\\hat{\\alpha} = 0.0001\\)), then on any given day we can predict what VW “should” have returned — absent any firm-specific news."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#event-study-methodology-5",
+    "href": "lectures/lecture_5.html#event-study-methodology-5",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Event Study Methodology",
+    "text": "Event Study Methodology\nStep 2: Choosing a benchmark model\n\n\n\n\n\n\n\n\n\n\nModel\nFormula\nPros\nCons\n\n\n\n\nMarket Model\n\\(R_i = \\alpha + \\beta R_m + \\varepsilon\\)\nSimple, intuitive, widely used\nIgnores size/value effects\n\n\nCAPM\n\\(R_i - R_f = \\beta (R_m - R_f) + \\varepsilon\\)\nTheoretical foundation\nConstrains \\(\\alpha = 0\\)\n\n\nFama–French 3-Factor\n\\(R_i - R_f = \\alpha + \\beta_{mkt}(R_m - R_f) + \\beta_{smb}SMB + \\beta_{hml}HML + \\varepsilon\\)\nControls for size and value\nMore parameters to estimate\n\n\n\n\nFor short-window studies, the model choice typically does not matter much. We will verify this by comparing Market Model and FF3 results in A5."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#event-study-methodology-6",
+    "href": "lectures/lecture_5.html#event-study-methodology-6",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Event Study Methodology",
+    "text": "Event Study Methodology\nStep 3: The Fama–French 3-Factor Model\n\\[R_{i,t} - R_{f,t} = \\alpha_i + \\beta_{mkt}(R_{m,t} - R_{f,t}) + \\beta_{smb}\\, SMB_t + \\beta_{hml}\\, HML_t + \\varepsilon_{i,t}\\]\n\n\nThe two additional factors\n\nSMB (Small Minus Big): Return difference between small-cap and large-cap portfolios → captures size risk\nHML (High Minus Low): Return difference between high book-to-market (value) and low book-to-market (growth) stocks → captures value risk\n\n\nWhy bother?\nIf German automakers are systematically large, value firms, the Market Model may attribute some of their normal return to alpha when it is actually compensation for size and value exposure. FF3 controls for this — reducing potential misattribution bias in the abnormal return calculation.\n\n\n\nSee Fama and French (1993) for the original three-factor model."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#event-study-methodology-7",
+    "href": "lectures/lecture_5.html#event-study-methodology-7",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Event Study Methodology",
+    "text": "Event Study Methodology\nStep 4: Abnormal returns — The “surprise”\n\\[AR_{i,t} = R_{i,t} - \\hat{E}[R_{i,t}]\\]\n\n\\(R_{i,t}\\): What the stock actually returned on day \\(t\\)\n\\(\\hat{E}[R_{i,t}]\\): What we predicted it would return, given the market\n\\(AR_{i,t}\\): The abnormal return — the part unexplained by normal market movements\n\nSanity check\nIn the estimation window, the mean abnormal return should be approximately zero — because we estimated the model on that data. If \\(\\bar{AR} \\neq 0\\) in the estimation window, something has gone wrong. This is the event study equivalent of checking OLS residuals."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#event-study-methodology-8",
+    "href": "lectures/lecture_5.html#event-study-methodology-8",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Event Study Methodology",
+    "text": "Event Study Methodology\nStep 4: Interpreting abnormal returns\n\n\nWhat does AR mean?\n\n\\(AR &gt; 0\\): Stock did better than expected → positive surprise\n\\(AR &lt; 0\\): Stock did worse than expected → negative surprise\n\\(AR \\approx 0\\): Stock behaved as the model predicted → no news\n\n\nMarket Model AR\n\\[AR_{i,t}^{MM} = R_{i,t} - \\hat{\\alpha}_i - \\hat{\\beta}_i R_{m,t}\\]\nFF3 AR\n\\[AR_{i,t}^{FF3} = R_{i,t} - R_{f,t} - \\hat{\\alpha}_i - \\hat{\\beta}_{mkt}(R_{m,t} - R_{f,t})\\] \\[- \\hat{\\beta}_{smb} SMB_t - \\hat{\\beta}_{hml} HML_t\\]\n\nOn September 18, 2015, VW’s actual return was far below what its beta and the market return would predict.The large negative \\(AR\\) is the market’s verdict on Dieselgate."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#event-study-methodology-9",
+    "href": "lectures/lecture_5.html#event-study-methodology-9",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Event Study Methodology",
+    "text": "Event Study Methodology\nStep 5: Cumulative abnormal returns (CAR)\n\\[CAR_i[0, +5] = \\sum_{t=0}^{5} AR_{i,t}\\]\nWhy cumulate?\n\nMarkets may take several days to fully digest complex information\nDay 0 captures the initial shock; days +1 to +5 capture revisions, analyst coverage, contagion effects, and information cascading through the market\nA single day’s AR might miss the full story — CAR captures the total price impact\n\n\n\n\n\n\n\nConnection to A3\n\n\nIn Assignment 3, you used pre-calculated CARs as dependent variables in cross-sectional regressions. Now you understand where those numbers came from — and in A5 you will calculate them yourself."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#event-study-methodology-10",
+    "href": "lectures/lecture_5.html#event-study-methodology-10",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Event Study Methodology",
+    "text": "Event Study Methodology\nThe classic event study plot\n\nThis is the visual equivalent of the DiD plot you saw in L4 — but at daily frequency with the “treatment” being the scandal announcement."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#event-study-methodology-11",
+    "href": "lectures/lecture_5.html#event-study-methodology-11",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Event Study Methodology",
+    "text": "Event Study Methodology\nExpected results from Dieselgate\n\n\nKey findings (what you should find in A5)\n\nGerman automakers: significant negative CAR[0,+5]\nNon-German automakers: smaller or insignificant CARs\nVW hit hardest (direct responsibility), BMW and Mercedes affected by contagion / regulatory fears\nMarket Model and FF3 results should be similar — confirming robustness\n\n\nModel comparison\n\nIf CARs from both models are highly correlated and close to the 45° line in a scatter plot → the expected return model is not driving your results\nThis is a robustness check — demonstrating that your conclusions do not depend on the specific benchmark\nDifferences, if any, reveal whether size/value factors are important for this particular sample"
+  },
+  {
+    "objectID": "lectures/lecture_5.html#event-study-methodology-12",
+    "href": "lectures/lecture_5.html#event-study-methodology-12",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Event Study Methodology",
+    "text": "Event Study Methodology\nStatistical testing\nOnce you have CARs, you need to test whether they are statistically significant:\n\n\nTest 1: Is CAR ≠ 0?\n\nOne-sample t-test: \\(H_0: \\overline{CAR} = 0\\)\nSeparately for German and non-German firms\nA rejection tells you the event had a measurable price impact\n\n\nTest 2: Do groups differ?\n\nTwo-sample t-test: \\(H_0: \\overline{CAR}_{German} = \\overline{CAR}_{non-German}\\)\nTests whether German firms were hit more than controls\nThis is the event study analog of the DiD treatment effect\n\n\n\n\n\n\n\n\nSmall sample warning\n\n\nWith only 3 German automakers (after dropping VW subsidiaries), t-tests have low statistical power. Interpret results in terms of economic magnitude alongside statistical significance."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#event-study-methodology-13",
+    "href": "lectures/lecture_5.html#event-study-methodology-13",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Event Study Methodology",
+    "text": "Event Study Methodology\nCross-sectional analysis — “Who was hit hardest?”\nAfter computing CARs, we can ask: what firm characteristics predict larger (or smaller) reactions?\n\\[CAR_i[0, +5] = \\gamma_0 + \\gamma_1 \\text{German}_i + \\gamma_2 \\text{Size}_i + \\gamma_3 \\text{ROA}_i + \\gamma_4 \\text{Leverage}_i + u_i\\]\n\nThis is a cross-sectional OLS regression — connecting back to L3\nThe dependent variable is the CAR you just calculated\n\\(\\gamma_1\\) captures the differential reaction for German firms\n\\(\\gamma_2\\) through \\(\\gamma_4\\) test whether firm characteristics (size, profitability, leverage) amplify or dampen the reaction\n\nThis is exactly what you did in A3 — but now you understand the full pipeline from raw returns to CARs to cross-sectional tests."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#event-study-methodology-14",
+    "href": "lectures/lecture_5.html#event-study-methodology-14",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Event Study Methodology",
+    "text": "Event Study Methodology\nPractical considerations and pitfalls\nCommon challenges\n\nThin trading: Stocks that trade infrequently may have stale prices, biasing AR calculations\nEvent date ambiguity: Was the “real” event the EPA notice on September 18, or the media coverage on September 19, or earlier rumours? Sensitivity analysis with different event dates helps\nOverlapping events: If another major announcement coincides with the event, the AR will capture both\nSmall samples: With few treated firms, statistical power is low and outliers are influential\nEvent window length: Shorter windows are cleaner but may miss delayed reactions; longer windows introduce noise\n\n\n\nFor a comprehensive treatment, see MacKinlay (1997)."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#event-study-methodology-15",
+    "href": "lectures/lecture_5.html#event-study-methodology-15",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Event Study Methodology",
+    "text": "Event Study Methodology\nSummary of event studies\n\n\n\n\n\n\n\n\nAspect\nKey point\n\n\n\n\nWhen to use\nMarket reactions to specific, well-dated events\n\n\nKey assumption\nMarket efficiency — prices reflect public information quickly\n\n\nIdentification\nExpected return model provides the counterfactual\n\n\nStrengths\nPrecise timing, clean identification in short windows\n\n\nLimitations\nSingle events, small N, model dependence for longer horizons\n\n\nIn A5\nYou implement the full pipeline on Dieselgate data"
+  },
+  {
+    "objectID": "lectures/lecture_5.html#new-frontiers",
+    "href": "lectures/lecture_5.html#new-frontiers",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "New Frontiers",
+    "text": "New Frontiers\nReframing event studies as causal inference\nThe classic event study asks: “What would this stock have returned absent the event?”\nThat is fundamentally a counterfactual question — the same question DiD asks, just at daily frequency. Goldsmith-Pinkham and Lyu (2025) make this connection explicit:\n\nThe traditional abnormal return \\(AR_{i,t} = R_{i,t} - \\hat{E}[R_{i,t}]\\) is really an estimate of the average treatment effect on the treated — where the “treatment” is the event and the “counterfactual” comes from the factor model.\n\n\n\n\n\n\n\nSame revolution, different setting\n\n\nJust as Baker, Larcker, and Wang (2022) showed that standard TWFE can go wrong in staggered DiD, Goldsmith-Pinkham and Lyu (2025) show that standard abnormal return estimators can be biased when the factor model is wrong. The causal inference revolution is reaching event studies."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#new-frontiers-1",
+    "href": "lectures/lecture_5.html#new-frontiers-1",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "New Frontiers",
+    "text": "New Frontiers\nWhen does the benchmark model matter?\nTwo dimensions determine how much trouble you face:\n\n\n\n\n\n\n\n\n\n\nShort-run (days)\nLong-run (months/years)\n\n\n\n\nMany events, random timing\nModel choice barely matters ✅\nModel choice matters ⚠️\n\n\nSingle event\nIt depends ⚠️\nAlmost always biased ❌\n\n\n\n\n\nThe intuition\n\nDaily factor premiums are tiny (~0.02%). Over a 5-day window, misspecification error is negligible\nBut compound that over 250 trading days → up to 5 percentage points of bias\nWith many randomly timed events, factor realizations average out. With a single event, you are exposed to whatever the factors happened to do on that specific day\nDieselgate is a single event — we should be aware of this limitation, even though our short window provides protection"
+  },
+  {
+    "objectID": "lectures/lecture_5.html#new-frontiers-2",
+    "href": "lectures/lecture_5.html#new-frontiers-2",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "New Frontiers",
+    "text": "New Frontiers\nWhen it goes wrong — A concrete example\nAcemoglu et al. (2016) study firms connected to Timothy Geithner around his nomination as Treasury Secretary (November 21, 2008):"
+  },
+  {
+    "objectID": "lectures/lecture_5.html#new-frontiers-3",
+    "href": "lectures/lecture_5.html#new-frontiers-3",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "New Frontiers",
+    "text": "New Frontiers\nWhen it goes wrong — A concrete example\nAcemoglu et al. (2016) study firms connected to Timothy Geithner around his nomination as Treasury Secretary (November 21, 2008):\n\n\nThe setup\n\nSingle event, during the peak of the financial crisis\nNon-random timing — event happened when factor realizations were extreme\nShort horizon — but unusual market conditions\n\n\nThe finding\n\nStandard methods (Market Model, FF3) → significant positive effects for connected firms\nSynthetic control / gsynth methods → effects shrink dramatically toward zero\nWhy? The event coincided with extreme factor realizations. Standard models attribute part of the factor movement to the treatment effect"
+  },
+  {
+    "objectID": "lectures/lecture_5.html#new-frontiers-4",
+    "href": "lectures/lecture_5.html#new-frontiers-4",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "New Frontiers",
+    "text": "New Frontiers\nWhen it goes wrong — A concrete example\nAcemoglu et al. (2016) study firms connected to Timothy Geithner around his nomination as Treasury Secretary (November 21, 2008):\n\n\nThe setup\n\nSingle event, during the peak of the financial crisis\nNon-random timing — event happened when factor realizations were extreme\nShort horizon — but unusual market conditions\n\n\nThe lesson\n\nwith a single event in unusual market conditions, your factor model is doing heavy lifting\nRobustness across models (like comparing Market Model vs. FF3) helps, but it is not a complete solution"
+  },
+  {
+    "objectID": "lectures/lecture_5.html#famamacbeth-regression-1",
+    "href": "lectures/lecture_5.html#famamacbeth-regression-1",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Fama–MacBeth Regression",
+    "text": "Fama–MacBeth Regression\nFrom event reactions to systematic patterns\nEvent studies ask: “Did this specific event move stock prices?”\nA different question: “Do certain firm characteristics systematically predict returns across time?”\n\n\nExamples\n\nDoes firm size predict cross-sectional return differences?\nIs there a value premium — do high book-to-market firms outperform?\nSee Feng, Giglio, and Xiu (2020) for the factor zoo\nopenassetpricing.com by Chen and Zimmermann (2022)\n\n\nWhy a new method?\n\nThese are repeated cross-sectional questions, not event-specific\nWe need data across many time periods and many firms\nStandard pooled OLS has a serious problem…"
+  },
+  {
+    "objectID": "lectures/lecture_5.html#famamacbeth-regression-2",
+    "href": "lectures/lecture_5.html#famamacbeth-regression-2",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Fama–MacBeth Regression",
+    "text": "Fama–MacBeth Regression\nThe problem with pooled OLS\nCross-sectional correlation of residuals\nWhen you pool all firm-month observations and run OLS, you implicitly assume residuals are independent across firms within the same period. But…\n\nFirms are hit by common shocks (recessions, market crashes, policy changes)\nOn a bad day, most firms have negative residuals simultaneously\nThis means residuals within the same time period are correlated\n\n\n\n\n\n\n\nThe consequence\n\n\nPooled OLS dramatically understates standard errors, leading to inflated t-statistics and false conclusions about significance. This is similar to the Moulton problem from L4 — but the correlation is cross-sectional (across firms in the same period) rather than within-group over time."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#famamacbeth-regression-3",
+    "href": "lectures/lecture_5.html#famamacbeth-regression-3",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Fama–MacBeth Regression",
+    "text": "Fama–MacBeth Regression\nThe Fama–MacBeth idea\nFama and MacBeth (1973) proposed an elegant two-step solution:\nStep 1: For each month t, run a cross-sectional regression\nCollect T slope coefficients \\(\\hat{\\gamma}_{1,1}, \\hat{\\gamma}_{1,2}, \\ldots, \\hat{\\gamma}_{1,T}\\)\nStep 2: Average the T coefficients and use their time-series variation for inference\n\\(\\bar{\\gamma}_1 = \\frac{1}{T} \\sum_{t=1}^{T} \\hat{\\gamma}_{1,t} \\quad \\text{and} \\quad SE(\\bar{\\gamma}_1) = \\frac{s(\\hat{\\gamma}_{1,t})}{\\sqrt{T}}\\)\n\n\n\n\n\n\nThe key insight\n\n\nEach cross-sectional regression produces one estimate per period. By treating these as a time series, you automatically account for cross-sectional correlation — because each \\(\\hat{\\gamma}_{1,t}\\) already incorporates whatever common shock happened in period \\(t\\)."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#famamacbeth-regression-4",
+    "href": "lectures/lecture_5.html#famamacbeth-regression-4",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Fama–MacBeth Regression",
+    "text": "Fama–MacBeth Regression\nStep 1: Cross-sectional regressions\nFor each time period \\(t\\) (e.g. each month):\n\\[R_{i,t} = \\gamma_{0,t} + \\gamma_{1,t}\\, X_{i,t-1} + \\varepsilon_{i,t}\\]\n\n\nWhat this looks like\n\nEach month is a separate cross-sectional regression\nThe dependent variable is the return for firm \\(i\\) in month \\(t\\)\nThe independent variable \\(X_{i,t-1}\\) is a firm characteristic lagged by one period to avoid look-ahead bias\nEach regression produces its own slope \\(\\hat{\\gamma}_{1,t}\\)\n\n\nVisual intuition\nImagine 3–4 scatter plots side by side, each showing one month’s cross-section: firm returns on the y-axis vs. a characteristic (e.g. ESG score) on the x-axis. Each scatter plot has its own fitted line. The slopes vary from month to month — some steep, some flat, some negative. FM collects all these slopes and asks: on average, is the slope positive?"
+  },
+  {
+    "objectID": "lectures/lecture_5.html#famamacbeth-regression-5",
+    "href": "lectures/lecture_5.html#famamacbeth-regression-5",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Fama–MacBeth Regression",
+    "text": "Fama–MacBeth Regression\nStep 2: Time-series average\n\\[\\bar{\\gamma}_1 = \\frac{1}{T} \\sum_{t=1}^{T} \\hat{\\gamma}_{1,t}\\]\nThe average slope across all periods is our estimate of the systematic relationship between the characteristic and returns — the risk premium, if you are thinking in asset pricing terms."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#famamacbeth-regression-6",
+    "href": "lectures/lecture_5.html#famamacbeth-regression-6",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Fama–MacBeth Regression",
+    "text": "Fama–MacBeth Regression\nStep 3: Standard errors\n\\[SE(\\bar{\\gamma}_1) = \\frac{s(\\hat{\\gamma}_{1,t})}{\\sqrt{T}}\\]\nwhere \\(s(\\hat{\\gamma}_{1,t})\\) is the standard deviation of the \\(T\\) estimated slopes.\n\n\n\n\n\n\nWhy this solves the problem\n\n\nPooled OLS treats each firm-month as independent → too many “observations.” FM recognizes that there are only \\(T\\) independent cross-sections. The time-series variation in \\(\\hat{\\gamma}_{1,t}\\) reflects the true uncertainty about the average relationship. If the slope is stable over time, SE is small; if it bounces around, SE is large."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#famamacbeth-regression-7",
+    "href": "lectures/lecture_5.html#famamacbeth-regression-7",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Fama–MacBeth Regression",
+    "text": "Fama–MacBeth Regression\nVisualizing the distribution of slopes\n\nWhat the distribution tells you\n\nSlopes tightly clustered around a positive value → strong, stable evidence that the characteristic predicts returns\nSlopes widely dispersed around zero → no reliable relationship; sometimes positive, sometimes negative\nSlopes with a clear positive mean but large variance → the relationship exists on average but is noisy period-by-period\n\nThis distribution is the core diagnostic of Fama–MacBeth. It shows you not just the average effect, but how consistent it is over time."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#famamacbeth-regression-8",
+    "href": "lectures/lecture_5.html#famamacbeth-regression-8",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Fama–MacBeth Regression",
+    "text": "Fama–MacBeth Regression\nComparison: FM vs. pooled OLS vs. panel FE\n\n\n\n\n\n\n\n\n\n\nAspect\nPooled OLS\nPanel FE (L4)\nFama–MacBeth\n\n\n\n\nProblem addressed\n—\nTime-invariant confounders\nCross-sectional correlation of residuals\n\n\nHow\nSingle regression on all data\nEntity & time fixed effects\nRepeated cross-sectional regressions\n\n\nSE adjustment\nNone (or robust/clustered)\nCluster by entity or time\nTime-series variation of coefficients\n\n\nTypical use\nBaseline specification\nCorporate finance panels\nAsset pricing, return predictability\n\n\nAssumes\nIndependence\nParallel trends, no time-varying confounders\nStable cross-sectional relationship\n\n\nRisk\nOverstated significance\nAbsorbs too much variation\nImprecise first-stage estimates (EIV)\n\n\n\n\nWhen to use FM vs. clustered SE?\nPetersen (2008) shows that FM and clustering by time address the same problem (cross-sectional correlation). In practice, double-clustering (by firm and time) is a modern alternative. FM remains standard for asset pricing tests because of its interpretability: the distribution of \\(\\hat{\\gamma}_{1,t}\\) values is informative in its own right."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#famamacbeth-regression-9",
+    "href": "lectures/lecture_5.html#famamacbeth-regression-9",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Fama–MacBeth Regression",
+    "text": "Fama–MacBeth Regression\nApplications in published research\nFama–MacBeth is everywhere in asset pricing and corporate finance:\n\nOriginal CAPM tests: Fama and MacBeth (1973) tested whether market beta explains cross-sectional return variation\nFama–French factor tests: Do SMB and HML factors carry a risk premium?\nESG and returns: Does environmental or social performance predict returns?\nLiquidity premiums: Do less-liquid stocks earn higher returns?\nAnomaly research: Size, value, momentum, profitability, investment — nearly all tested via FM\n\nIf you read a finance paper that reports “Fama–MacBeth regressions,” you now know exactly what the authors did and why."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#famamacbeth-regression-10",
+    "href": "lectures/lecture_5.html#famamacbeth-regression-10",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Fama–MacBeth Regression",
+    "text": "Fama–MacBeth Regression\nLimitations\n\nErrors-in-variables (EIV): The first-stage coefficients \\(\\hat{\\gamma}_{1,t}\\) are estimated with error, which attenuates the second-stage average toward zero. The Shanken correction adjusts for this, but adds complexity, see Kim (1995) and Shanken (1992).\nPersistence in characteristics: FM assumes cross-sections are relatively independent over time. If firm characteristics are highly persistent (e.g. firm size barely changes month-to-month), FM may underperform double-clustered SE approaches\nBalanced panel preference: FM works best when each cross-section has a similar set of firms. If the firm universe changes dramatically over time, the \\(\\hat{\\gamma}_{1,t}\\) estimates may not be comparable\nModern alternatives: Double-clustered standard errors (Petersen 2008) address the same problem and are easier to implement in standard software"
+  },
+  {
+    "objectID": "lectures/lecture_5.html#famamacbeth-regression-11",
+    "href": "lectures/lecture_5.html#famamacbeth-regression-11",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Fama–MacBeth Regression",
+    "text": "Fama–MacBeth Regression\nSummary\n\n\n\n\n\n\n\n\nAspect\nKey point\n\n\n\n\nWhen to use\nTesting whether firm characteristics systematically predict returns over time\n\n\nKey insight\nTwo-step procedure that automatically handles cross-sectional correlation\n\n\nStep 1\nRun a cross-sectional regression for each time period\n\n\nStep 2\nAverage the coefficients; use time-series variation for SE\n\n\nStrengths\nInterpretable, widely used, addresses cross-sectional correlation\n\n\nLimitations\nEIV bias, assumes stable relationship, balanced panel preferred\n\n\nAlternative\nDouble-clustered SE (Petersen, 2009) for the same problem"
+  },
+  {
+    "objectID": "lectures/lecture_5.html#synthesis-1",
+    "href": "lectures/lecture_5.html#synthesis-1",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Synthesis",
+    "text": "Synthesis\nThe complete methods toolkit\n\n\n\n\n\n\n\n\n\n\n\nLecture\nMethod\nIdentifies\nData structure\nKey assumption\n\n\n\n\nL3\nOLS + controls\nCross-sectional relationships\nCross-section\nNo omitted variables (selection on observables)\n\n\nL4\nDiD / Panel FE\nCausal effect of treatment\nPanel\nParallel trends\n\n\nL5\nEvent study\nMarket reaction to specific events\nDaily panel\nMarket efficiency + correct factor model\n\n\nL5\nFama–MacBeth\nSystematic return predictability\nRepeated cross-sections\nCross-sections are independent draws\n\n\n\n\nEach method trades off different assumptions. The art of empirical finance is choosing the method whose assumptions are most credible for your specific research question and data."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#synthesis-2",
+    "href": "lectures/lecture_5.html#synthesis-2",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Synthesis",
+    "text": "Synthesis\nStandard errors: A unifying thread\nThe standard error story has been building across the course:\n\nL3: Heteroskedasticity-robust SE → solves non-constant variance\nL4: Cluster-robust SE → handles within-group correlation (Moulton problem)\nL5: Fama–MacBeth SE → handles cross-sectional correlation of residuals\n\nAll three address the same fundamental issue: when residuals are not independent, naive standard errors are too small. The solution is always to match the inference method to the correlation structure of the data.\n\n\n\n\n\n\nThe common thread\n\n\nThe choice of standard error is not a technicality, it is a statement about what you believe is independent in your data. Getting it wrong can flip your conclusions from significant to insignificant (or vice versa)."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#synthesis-3",
+    "href": "lectures/lecture_5.html#synthesis-3",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Synthesis",
+    "text": "Synthesis\nConnection to A5\nAssignment 5 asks you to:\n\nLoad daily stock return data for auto firms\nDrop VW subsidiaries to avoid mechanical linkages\nDefine estimation [−120, −30] and event [0, +5] windows\nEstimate Market Model and Fama–French 3-Factor expected returns\nCalculate abnormal returns (AR) and cumulative abnormal returns (CAR)\nCreate the classic event study visualization\nConduct cross-sectional tests on CARs\n\nThis is the full event study pipeline from raw data to publishable results. Everything from today’s lecture maps directly onto specific assignment tasks."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#synthesis-4",
+    "href": "lectures/lecture_5.html#synthesis-4",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Synthesis",
+    "text": "Synthesis\nConnection to your thesis\nBoth methods from today are staples of finance research:\n\nEvent studies appear in papers on M&A announcements, earnings surprises, regulatory changes, CEO turnovers, patent issuances, and many more corporate events\nFama–MacBeth is the standard approach for testing asset pricing models and cross-sectional return predictability\n\n\n\n\n\n\n\nFor your replication project\n\n\nUnderstanding the mechanics, assumptions, and limitations of the applied methods puts you in a strong position to critically evaluate and extend the original analysis."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#synthesis-5",
+    "href": "lectures/lecture_5.html#synthesis-5",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Synthesis",
+    "text": "Synthesis\nLooking ahead — L6: Replication Workshop\nIn the final lecture, we bring everything together:\n\nHow to read and replicate a published paper, seagway through Huck (2024) before next lecture\nConnecting methods (OLS, DiD, event studies, FM) to research designs\nCommon pitfalls in replication work\nHow to extend a replication for your thesis\n\n\n\n\n\n\n\nKey message from this course\n\n\nThe methods are tools, not ends in themselves. The value is in understanding when each tool is appropriate, what it assumes, and how to interpret the results in the context of a real research question."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#appendix-1",
+    "href": "lectures/lecture_5.html#appendix-1",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Appendix",
+    "text": "Appendix\nMacKinlay (1997) — The classic event study reference\nMacKinlay (1997) established the modern event study framework:\n\nFormalized the estimation window / event window structure\nShowed that the Market Model dominates simpler approaches (mean-adjusted, market-adjusted)\nProvided test statistics for single-firm and multi-firm event studies\nDiscussed parametric and non-parametric tests\n\nThis paper remains the default citation for event study methodology. Nearly every event study paper begins with a sentence like: “We follow the standard event study methodology of MacKinlay (1997).”"
+  },
+  {
+    "objectID": "lectures/lecture_5.html#appendix-2",
+    "href": "lectures/lecture_5.html#appendix-2",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Appendix",
+    "text": "Appendix\nFama & French (1993) — Factor construction\nHow SMB and HML are constructed\n\nSMB: Sort all stocks by market capitalization into two groups (small, big). SMB = return of small portfolio − return of big portfolio\nHML: Sort all stocks by book-to-market ratio into three groups (low, medium, high). HML = return of high B/M portfolio − return of low B/M portfolio\nBoth factors are rebalanced annually and returns are computed daily or monthly\n\nWhy these factors?\nFama and French (1993) documented that size and value explain a large share of cross-sectional return variation that CAPM beta alone cannot. Whether these reflect risk or mispricing remains debated — but the empirical regularity is well-established."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#appendix-3",
+    "href": "lectures/lecture_5.html#appendix-3",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Appendix",
+    "text": "Appendix\nPetersen (2008) — Choosing the right standard errors\nPetersen (2008) provides a decision framework:\n\n\n\n\n\n\n\n\nCorrelation structure\nSolution\n\n\n\n\nFirm effect (residuals correlated within firm over time)\nCluster by firm\n\n\nTime effect (residuals correlated across firms within period)\nCluster by time, or Fama–MacBeth\n\n\nBoth\nDouble-cluster by firm AND time\n\n\n\n\nKey finding: Fama–MacBeth and clustering by time produce similar standard errors when the number of time periods is large. Double-clustering is more general and handles both dimensions simultaneously."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#appendix-4",
+    "href": "lectures/lecture_5.html#appendix-4",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Appendix",
+    "text": "Appendix\nEvent study cross-sectional correlation\nKolari and Pynnönen (2010) address a subtle issue: even in short-window event studies, abnormal returns may be cross-sectionally correlated when the event affects multiple firms simultaneously (as in Dieselgate).\nStandard event study tests assume independence across firms. When this fails:\n\nAggregate test statistics are inflated\nThe adjusted BMP test accounts for cross-sectional correlation in ARs\nAlternative: bootstrap methods that resample clusters of firms\n\nThis matters for Dieselgate because all German automakers are hit by the same event on the same day — their ARs are not independent draws."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#appendix-5",
+    "href": "lectures/lecture_5.html#appendix-5",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "Appendix",
+    "text": "Appendix\nGoldsmith-Pinkham & Lyu (2024) — Key results summary\nThree empirical examples\n\nGeithner connections (single event, non-random timing): Standard methods overstate effects; synthetic control finds near-zero effects\nS&P 500 index inclusion (many events, random timing): All methods agree in the short run — model choice does not matter\nM&A acquirer returns (many events, quasi-random): Short-run effects similar across methods; long-run effects diverge substantially\n\nKey takeaways\n\nShort-run + random timing → classical methods work well\nSingle event OR long horizon → factor model misspecification can seriously bias results\nSynthetic control and GSynth are robust alternatives, especially for long-horizon studies\nThe bias compounds over time: a daily misspecification of 0.02% becomes 5% over a year"
+  },
+  {
+    "objectID": "lectures/lecture_5.html#new-frontiers-5",
+    "href": "lectures/lecture_5.html#new-frontiers-5",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "New Frontiers",
+    "text": "New Frontiers\nAlternative counterfactual approaches\nInstead of assuming you know the right factor model, let the data construct the counterfactual:\n\n\n\n\n\n\n\n\n\nApproach\nKey idea\nConnection\n\n\n\n\nSynthetic control\nWeighted portfolio of control firms that matches pre-event returns\nSame as Abadie’s SCM from policy evaluation\n\n\nGSynth / PCA regression\nData-driven factor structure estimated from the pre-event period\nLets the data find the factors instead of assuming them\n\n\nSynthetic DiD\nCombines synthetic control weighting with DiD structure\nBridges the two literatures\n\n\n\n\n\n\n\nFor details see Goldsmith-Pinkham and Lyu (2025)."
+  },
+  {
+    "objectID": "lectures/lecture_5.html#new-frontiers-6",
+    "href": "lectures/lecture_5.html#new-frontiers-6",
+    "title": "Event Studies and Fama–MacBeth",
+    "section": "New Frontiers",
+    "text": "New Frontiers\nTakeaway for your thesis\n\n\n\n\n\n\nPractical guidance\n\n\n\nShort-run, many events, random timing → Market Model / FF3 results are fine. Model choice barely matters (see Shleifer 1986)\nShort-run, single event (like Dieselgate) → Be aware that factor realizations add noise. Comparing multiple models (as you do in A5) is a good robustness check\nLong-run event studies → Seriously consider synthetic control or GSynth\nGeneral rule: If your Market Model and FF3 CARs agree closely, that is reassuring. If they disagree, dig into why\n\n\n\n\nThe good news: A5 uses a short event window [0,+5] and compares two benchmark models. If both tell the same story, your results are robust to the concerns raised by this new literature."
   }
 ]
