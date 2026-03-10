@@ -1304,16 +1304,16 @@
   {
     "objectID": "lectures/lecture_6.html#overview",
     "href": "lectures/lecture_6.html#overview",
-    "title": "Replication Workshop",
+    "title": "Bringing It All Together",
     "section": "Overview",
-    "text": "Overview"
+    "text": "Overview\nToday’s agenda\n\n\nPart 1: Where We’ve Been\n\nRecap of Lectures 1–5\nThe empirical researcher’s toolkit\n\nPart 2: The Paper\n\nHuck (2024) in RFS\nEvery section mapped to your toolkit\n\n\nPart 3: Your Turn\n\nAssignment 6: Dutch replication\nWalkthrough\n\nPart 4: Wrap-Up\n\nThesis connection\nThe role of AI in your workflow"
   },
   {
     "objectID": "lectures/lecture_6.html#overview-1",
     "href": "lectures/lecture_6.html#overview-1",
-    "title": "Replication Workshop",
+    "title": "Bringing It All Together",
     "section": "Overview",
-    "text": "Overview\nRecap of previous lectures"
+    "text": "Overview\nLearning objectives\nBy the end of today, you will be able to\n\nRecognize how the course’s methods connect to published research\nUnderstand the research design and identification strategy of Huck (2024)\nInterpret and critically evaluate replication results in a new setting\nWrite a discussion of findings, limitations, and extensions\nConnect this exercise to your MSc thesis\n\n\n\n\n\n\n\nWhy this matters\n\n\nYou are about to do exactly what thesis Module 2 asks: read a published paper, replicate the methodology with new data, and evaluate whether findings generalize."
   },
   {
     "objectID": "lectures/lecture_6.html#overview-2",
@@ -1367,9 +1367,9 @@
   {
     "objectID": "lectures/lecture_6.html#references",
     "href": "lectures/lecture_6.html#references",
-    "title": "Replication Workshop",
+    "title": "Bringing It All Together",
     "section": "References",
-    "text": "References"
+    "text": "References\n\n\nAbel, Andrew B. 1990. “Asset Prices Under Habit Formation and Catching up with the Joneses.” The American Economic Review 80 (2): 38–42. http://www.jstor.org/stable/2006539.\n\n\nCard, David, and Gordon B Dahl. 2011. “Family Violence and Football: The Effect of Unexpected Emotional Cues on Violent Behavior.” The Quarterly Journal of Economics 126 (1): 103–43.\n\n\nEngelberg, Joseph, and Christopher A Parsons. 2016. “Worrying about the Stock Market: Evidence from Hospital Admissions.” The Journal of Finance 71 (3): 1227–50.\n\n\nGali, Jordi. 1994. “Keeping up with the Joneses: Consumption Externalities, Portfolio Choice, and Asset Prices.” Journal of Money, Credit and Banking 26 (1): 1–8.\n\n\nHuck, John R. 2024. “The Psychological Externalities of Investing: Evidence from Stock Returns and Crime.” The Review of Financial Studies 37 (7): 2273–2314.\n\n\nMalloy, Christopher J, Tobias J Moskowitz, and Annette Vissing-Jørgensen. 2009. “Long-Run Stockholder Consumption Risk and Asset Returns.” The Journal of Finance 64 (6): 2427–79."
   },
   {
     "objectID": "lectures/lecture_2.html#before-we-start-1",
@@ -2056,5 +2056,334 @@
     "title": "Event Studies and Fama–MacBeth",
     "section": "New Frontiers",
     "text": "New Frontiers\nTakeaway for your thesis\n\n\n\n\n\n\nPractical guidance\n\n\n\nShort-run, many events, random timing → Market Model / FF3 results are fine. Model choice barely matters (see Shleifer 1986)\nShort-run, single event (like Dieselgate) → Be aware that factor realizations add noise. Comparing multiple models (as you do in A5) is a good robustness check\nLong-run event studies → Seriously consider synthetic control or GSynth\nGeneral rule: If your Market Model and FF3 CARs agree closely, that is reassuring. If they disagree, dig into why\n\n\n\n\nThe good news: A5 uses a short event window [0,+5] and compares two benchmark models. If both tell the same story, your results are robust to the concerns raised by this new literature."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#before-we-start",
+    "href": "lectures/lecture_6.html#before-we-start",
+    "title": "Bringing It All Together",
+    "section": "Before We Start…",
+    "text": "Before We Start…\nAssignment Release and Submission Schedule\n\n\n\n\nAssignment\nRelease\nDeadline\nGraded\n\n\n\n\nA1\n11.02.2026\n25.02.2026\n\\(\\checkmark\\)\n\n\nA2\n11.02.2026\n25.02.2026\n\\(\\checkmark\\)\n\n\nA3\n18.02.2026\n04.03.2026\n\\(\\checkmark\\)\n\n\nA4\n25.02.2026\n11.03.2026\n\n\n\nA5\n04.03.2026\n18.03.2026\n\n\n\nA6\n11.03.2026\n25.03.2026\n\n\n\n\n\n\n\n\n\n\n\nAssignment 6!\n\n\nA6 is the replication exercise. You will replicate Huck (2024) using Dutch data. Everything we discuss today feeds directly into it. Deadline: March 25, 2026."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#where-weve-been",
+    "href": "lectures/lecture_6.html#where-weve-been",
+    "title": "Bringing It All Together",
+    "section": "Where We’ve Been",
+    "text": "Where We’ve Been\nThe journey in one picture\n\nEach lecture added a layer to your empirical toolkit. Today we see how they work together in a single published paper and in your own replication."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#lecture-1-from-messy-data-to-research-insights",
+    "href": "lectures/lecture_6.html#lecture-1-from-messy-data-to-research-insights",
+    "title": "Bringing It All Together",
+    "section": "Lecture 1: From Messy Data to Research Insights",
+    "text": "Lecture 1: From Messy Data to Research Insights\nThe foundation: You can’t analyze what you can’t structure\n\n\nKey takeaways\n\nResearch starts with data wrangling, not regressions\nRaw data is messy: missing values, inconsistent formats, multiple sources\nThe pipeline: import ⤏ clean ⤏ transform ⤏ merge ⤏ analyze\nTools: Stata, merge, reshape, collapse, gen/replace\n\n\nFrom this course\n\nCompustat Global via WRDS\nThe “tidy data” principle: one row per observation unit\nOptional: SQL DB for efficient data management\n\n\n\n\n\n\n\n\nRemember this?\n\n\nIn every assignment, you spent 60–70% of your time on data preparation. That’s research. Facts!"
+  },
+  {
+    "objectID": "lectures/lecture_6.html#lecture-2-data-exploration-visualization",
+    "href": "lectures/lecture_6.html#lecture-2-data-exploration-visualization",
+    "title": "Bringing It All Together",
+    "section": "Lecture 2: Data Exploration & Visualization",
+    "text": "Lecture 2: Data Exploration & Visualization\nLook before you run regressions\n\n\nKey takeaways\n\nVisualization is diagnosis, not decoration\nSummary statistics reveal distributions, outliers, patterns\nHistograms, scatter plots, time series — each serves a purpose\nAlways check your data before running regressions\n\n\nApplication\n\n\n\n\n\n\n\n\nThe principle\n\n\nIf your regression tells you something your visualization doesn’t support. Trust the visualization and debug the regression."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#lecture-3-regressions-identification",
+    "href": "lectures/lecture_6.html#lecture-3-regressions-identification",
+    "title": "Bringing It All Together",
+    "section": "Lecture 3: Regressions & Identification",
+    "text": "Lecture 3: Regressions & Identification\nThe sign-flip — OVB can reverse your conclusions\n\n\nKey takeaways\n\nIdentification = isolating causal variation\nEndogeneity: X correlated with the error term\n\nSelection bias: who self-selects into treatment\nOmitted variable bias: what you forgot to control for\n\nExperiments as the gold standard\nOLS: the workhorse, but only as good as your identification\n\n\nThe DiLLMa lesson\n\n\n\n\n\n\n\nOVB doesn’t just make estimates imprecise, it can flip the sign!"
+  },
+  {
+    "objectID": "lectures/lecture_6.html#lecture-4-panel-data-methods",
+    "href": "lectures/lecture_6.html#lecture-4-panel-data-methods",
+    "title": "Bringing It All Together",
+    "section": "Lecture 4: Panel Data Methods",
+    "text": "Lecture 4: Panel Data Methods\nControl for what you can’t measure\n\n\nKey takeaways\n\nPanel data: multiple units observed over time\nFixed effects absorb unobserved heterogeneity\n\nEntity FE: time-invariant characteristics\nTime FE: common shocks across units\n\nDifference-in-Differences: treatment vs control, before vs after\nParallel trends assumption as the key identification requirement\n\n\nFrom this course\n\nDieselgate as a natural experiment\nWithin-firm variation: same VW before vs after scandal\nStaggered adoption and modern DiD advances (Sun & Abraham, Callaway & Sant’Anna)\nClustering standard errors by the right dimension\n\n\n\n\n\n\n\n\nThe intuition\n\n\nIf you can’t run an experiment and can’t observe all confounders, panel methods let you difference them out."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#lecture-5-event-studies-famamacbeth",
+    "href": "lectures/lecture_6.html#lecture-5-event-studies-famamacbeth",
+    "title": "Bringing It All Together",
+    "section": "Lecture 5: Event Studies & Fama–MacBeth",
+    "text": "Lecture 5: Event Studies & Fama–MacBeth\nSpecialized tools for finance\n\n\nEvent Studies\n\nShort-window test of market reactions\nEstimation window ⤏ expected return model ⤏ abnormal returns ⤏ CARs\nThe “counterfactual” is the factor model prediction\nSame logic as DiD, but at daily frequency\nLeads and lags reveal timing of information incorporation\n\n\nKey picture"
+  },
+  {
+    "objectID": "lectures/lecture_6.html#the-empirical-researchers-toolkit",
+    "href": "lectures/lecture_6.html#the-empirical-researchers-toolkit",
+    "title": "Bringing It All Together",
+    "section": "The Empirical Researcher’s Toolkit",
+    "text": "The Empirical Researcher’s Toolkit\nMatching research questions to methods\n\n\n\n\n\n\n\n\n\n\nResearch question type\nData structure\nMethod\nLecture\n\n\n\n\nDoes X predict Y?\nCross-section\nOLS with controls\nL3\n\n\nDoes X cause Y? (observable confounders)\nCross-section\nOLS + careful controls\nL3\n\n\nDoes X cause Y? (unobservable confounders)\nPanel\nFixed effects, DiD\nL4\n\n\nHow did the market react to event E?\nDaily returns\nEvent study (CARs)\nL5\n\n\nDoes characteristic Z earn a risk premium?\nPanel of returns\nFama–MacBeth\nL5\n\n\nDoes this US result hold in the Netherlands?\nSame spec\nReplication\nL6\n\n\n\n\n\n\n\n\n\n\nKey insight\n\n\nThe method follows from the question and the data structure and not the other way around."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#the-paper",
+    "href": "lectures/lecture_6.html#the-paper",
+    "title": "Bringing It All Together",
+    "section": "The Paper",
+    "text": "The Paper\nOverview\n\n\nCitation\nHuck (2024) — “The Psychological Externalities of Investing: Evidence from Stock Returns and Crime”\nThe Review of Financial Studies, 37(4), 1172–1213.\nThe question\n\nDo stock market returns affect the psychological well-being of both investors and noninvestors?\n\n\nWhy this paper?\n\nPublished in a top-5 finance journal\nUses methods you’ve learned in Lectures 1–5\nClean identification strategy\nSurprising result: the stock market affects people who don’t even own stocks!"
+  },
+  {
+    "objectID": "lectures/lecture_6.html#the-paper-1",
+    "href": "lectures/lecture_6.html#the-paper-1",
+    "title": "Bringing It All Together",
+    "section": "The Paper",
+    "text": "The Paper\nThe idea\nCrime as a measure of psychological well-being\n\nTraditional approach: surveys (subjective well-being questions)\nProblem: surveys are low-frequency, susceptible to framing, and rarely measure wealth effects\nHuck’s innovation: use daily crime data as a revealed response to psychological distress\n\n\n\n\n\n\n\nPrecedent\n\n\nCard and Dahl (2011) use intimate partner violence as a proxy for emotional shocks from NFL game outcomes. Same logic: if people feel worse, some act out in ways that show up in the data."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#the-paper-2",
+    "href": "lectures/lecture_6.html#the-paper-2",
+    "title": "Bringing It All Together",
+    "section": "The Paper",
+    "text": "The Paper\nContrasting predictions (Hypothesis)\n\n\n\n\n\nThe contrasting predictions are what make this interesting — it’s not just “does X cause Y” but “does X cause Y differently for subgroups?”\n\n\nLink to L3: This is identification thinking. What’s the DGP? What variation are we exploiting? What’s the hypothesis?"
+  },
+  {
+    "objectID": "lectures/lecture_6.html#the-paper-3",
+    "href": "lectures/lecture_6.html#the-paper-3",
+    "title": "Bringing It All Together",
+    "section": "The Paper",
+    "text": "The Paper\nRelative wealth (Mechanism)\n\n\nInvestors\n\nStock market rises ⤏ absolute wealth increases\nAlso better off relative to average person\nPsychological well-being improves\nViolent crime decreases\n\n\nNoninvestors\n\nStock market rises ⤏ no change in own wealth\nBut now relatively worse off compared to investors\nPsychological well-being declines\nViolent crime increases\n\n\nThis is consistent with relative status models (Abel 1990; Gali 1994) and the “keeping up with the Joneses” literature."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#the-paper-4",
+    "href": "lectures/lecture_6.html#the-paper-4",
+    "title": "Bringing It All Together",
+    "section": "The Paper",
+    "text": "The Paper\nData: The pipeline you already know\n\n\nThree data sources\n\nCrime: FBI NIBRS: 55M+ incidents, 2,700 agencies, 1991–2015\nIncome: ACS Census: median income by city/county (proxy for investor status)\nReturns: Kenneth French’s website \n\nCleaning decisions\n\nFilter inconsistent reporters\nRemove agencies with &lt;50 report days,small/remote agencies (&lt;2,000 pop)\nCrime day starts at 6 AM (before market opens)\n\n\nVariable construction\n\nCrime rates: incidents per 100M population\nIncome terciles: high/medium/low as investor proxy\nStandardized returns: \\(r_t / \\sigma_{t,252}\\)\nViolent crime: assaults + homicides only\n\n\n\n\n\n\n\n\nLink to L1–L2\n\n\nThis is the data pipeline from Lectures 1–2. Three raw sources ⤏ clean ⤏ merge ⤏ construct variables. Huck devotes a substantial part of the paper to describing these choices. Remember when 60–70% of your assignment time was data prep?"
+  },
+  {
+    "objectID": "lectures/lecture_6.html#the-paper-5",
+    "href": "lectures/lecture_6.html#the-paper-5",
+    "title": "Bringing It All Together",
+    "section": "The Paper",
+    "text": "The Paper\nData: Income as investor proxy\n\n\nWhy income terciles?\n\nMalloy, Moskowitz, and Vissing-Jørgensen (2009) show probability of holding stocks increases significantly with income\nTop tercile ≈ likely investors\nBottom tercile ≈ likely noninvestors\nAvailable for all agencies\n\n\nWhy violent crime specifically?\n\nAggregate crime ⤏ measurement problem: theft in rich areas likely committed by low-income individuals\nViolent crime (assaults, homicides): typically occurs at home, offender known to victim\n54% of assault victims in middle/high-income households\n44% assaulted at or near their home\nMinimizes the misattribution problem between offender income and location income\n\n\n\n\nLink to L2: This is the “think about your measurement” lesson. Your proxy needs to match your theory."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#the-paper-6",
+    "href": "lectures/lecture_6.html#the-paper-6",
+    "title": "Bringing It All Together",
+    "section": "The Paper",
+    "text": "The Paper\nDescriptive evidence\n\n\nHuck (2024), Table 2 — Summary statistics (crime rates per 100M, daily 1991–2015)\n\n\n\n\n\n\n\n\n\nAverage\nMedian\nSD\n\n\n\n\nCrime rate (all)\n22,659\n17,675\n18,565\n\n\n   High-income\n18,347\n14,547\n14,577\n\n\n   Medium-income\n24,215\n19,618\n18,894\n\n\n   Low-income\n27,043\n21,527\n21,784\n\n\nViolent crime rate\n4,676\n2,437\n7,140\n\n\n   High-income\n3,370\n1,524\n5,455\n\n\n   Medium-income\n5,077\n3,021\n7,199\n\n\n   Low-income\n6,093\n3,637\n8,748\n\n\nMarket return (std.)\n0.038\n0.082\n1.044\n\n\n\n\n\n\nLink to L2: Descriptive statistics before regressions. Crime increases monotonically from high to low income. Violent crime is ~20% of all crime."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#the-paper-7",
+    "href": "lectures/lecture_6.html#the-paper-7",
+    "title": "Bringing It All Together",
+    "section": "The Paper",
+    "text": "The Paper\nPanel FE regression\nThe model\n\\[y_{i,t} = \\beta \\cdot r_t + \\gamma \\cdot X_{i,t} + \\theta_{i,a(t)} + \\mu_{i,m(t)} + \\omega_{i,w(t)} + \\delta_{i,d(t)} + T_t + \\varepsilon_{i,t}\\]\n\n\n\n\n\n\n\n\n\n\nWhat it is\nWhat it absorbs\n\n\n\n\n\\(y_{i,t}\\)\nCrime rate for agency \\(i\\) on day \\(t\\)\nOutcome variable\n\n\n\\(r_t\\)\nStandardized daily market return\nCoefficient of interest\n\n\n\\(X_{i,t}\\)\nWeather, pollution, sports outcomes, celestial\nDaily confounders\n\n\n\\(\\theta_{i,a(t)}\\)\nAgency × year FE\nLocal business cycles, demographics\n\n\n\\(\\mu_{i,m(t)}\\)\nAgency × month-of-year FE\nLocal seasonal crime patterns\n\n\n\\(\\omega_{i,w(t)}\\)\nAgency × week-of-month FE\nPayday effects\n\n\n\\(\\delta_{i,d(t)}\\)\nAgency × day-of-week FE\nWeekend effects\n\n\n\\(T_t\\)\nTurn-of-month + holiday FE\nCalendar anomalies\n\n\n\n\nStandard errors clustered by time and agency."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#the-paper-8",
+    "href": "lectures/lecture_6.html#the-paper-8",
+    "title": "Bringing It All Together",
+    "section": "The Paper",
+    "text": "The Paper\nWhy so many fixed effects?\nThe identification challenge\nThe concern: maybe something else that happens on the same day drives both stock returns and crime (e.g., weather, sports, holidays).\n\n\nHuck’s defense\n\nAgency × year: absorbs local economic conditions that change annually\nAgency × month: absorbs seasonal crime patterns (summer peak, winter trough)\nAgency × day-of-week: absorbs weekend/weekday differences\nExplicit controls for weather, NFL/MLB, moon phases, daylight savings\n\n\nThe key insight\nIdentification occurs within each agency-year. After removing all these patterns, the remaining variation in crime is compared with daily market return fluctuations.\n\n\n\n\n\n\n\nLink to L4\n\n\nThis is the fixed effects logic taken seriously. Each layer of FE removes another source of confounding. The residual variation is what identifies the effect."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#the-paper-9",
+    "href": "lectures/lecture_6.html#the-paper-9",
+    "title": "Bringing It All Together",
+    "section": "The Paper",
+    "text": "The Paper\nDifferential effects by income (Core test)\nThe model is estimated separately for high-income (investor) and low-income (noninvestor) locations:\n\n\nResults (violent crime)\n\n\nAdapted from Huck (2024), Table 3\n\n\n\nHigh-income\nLow-income\n\n\n\n\nMarket return\n−12.47***\n+15.22**\n\n\n\n(−3.291)\n(2.043)\n\n\n% of avg\n−0.37%\n+0.25%\n\n\nt(HIGH=LOW)\n\n3.313\n\n\n\n\n\nInterpretation\n\n1 SD market return ↑ ⤏\n\n37 bps decrease in violent crime for investors\n25 bps increase in violent crime for noninvestors\n\nEffects are statistically different from each other (t = 3.31)\nSigns are opposite — consistent with relative wealth theory\n\n\n\n\nLink to L3: Reading regression tables, interpreting coefficients, economic vs statistical significance. This is DiLLMa at publication level."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#the-paper-10",
+    "href": "lectures/lecture_6.html#the-paper-10",
+    "title": "Bringing It All Together",
+    "section": "The Paper",
+    "text": "The Paper\nEconomic magnitude\nHow big is this?\n\nA 1% increase in the stock market (≈ 1 SD) corresponds to:\n\nAn additional 76–179 crimes per day across the US\n$7.1–16.8 million in daily costs to society\n$1.8–4.2 billion annualized\n\nFor investors, the 37 bps decrease in violent crime is comparable to Engelberg and Parsons (2016) finding of a 21 bps decrease in mental health admissions in California after market increases\n\n\n\n\n\n\n\nKey takeaway\n\n\nThe stock market has real externalities beyond the portfolios it directly affects. This is what makes it a finance paper with social implications."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#the-paper-11",
+    "href": "lectures/lecture_6.html#the-paper-11",
+    "title": "Bringing It All Together",
+    "section": "The Paper",
+    "text": "The Paper\nIs this really same-day? (Timing and identification)\n\n\nLeads and lags (Table 4)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nt−3\nt−2\nt−1\nt\nt+1\nt+2\nt+3\n\n\n\n\nHigh\n1.2\n6.1\n−6.4\n−12.5***\n−3.0\n−0.1\n3.8\n\n\nLow\n6.4\n−9.1\n−3.8\n15.2**\n5.0\n4.7\n2.1\n\n\n\n\nOnly the contemporaneous (day \\(t\\)) coefficients are significant!\n\nWhat this tells us\n\nNo pre-trends: market returns on t−1, t−2, t−3 don’t predict crime\nNo delayed effects: market returns don’t affect crime in coming days\nWithin the day: effect is strongest after markets close\nThis is consistent with: see news ⤏ emotional response ⤏ same-day behavior\n\n\n\n\nLink to L5: This is event study logic applied to crime. The leads/lags table is structurally identical to a CAR event window. The “no pre-trend” finding mirrors the parallel trends test from L4."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#the-paper-12",
+    "href": "lectures/lecture_6.html#the-paper-12",
+    "title": "Bringing It All Together",
+    "section": "The Paper",
+    "text": "The Paper\nDefending the identification (Robustness)\nGood empirical work doesn’t just show one result, it shows the result survives scrutiny.\n\n\nWhat Huck tests\n\nAlternative investor proxies: IRS dividend data, SCF probit model — same results\nAlcohol channel: ruled out (crime-return relationship not driven by drinking)\nAt-home violence: strongest for male-on-female domestic violence — location matches offender\nEarnings surprises: local firm announcements with daily FE — absorbs all common daily shocks\n\n\nWhy this matters\nEach robustness check addresses a specific threat to identification:\n\nAlternative proxies ⤏ measurement concern\nAlcohol ⤏ omitted variable / alternative mechanism\nAt-home violence ⤏ misattribution concern\nEarnings surprises ⤏ common shock concern\n\n\n\n\nLink to L4–L5: Robustness checks are how you defend your identification strategy. Each addresses a specific concern. This is exactly what you do in A5 (Dieselgate) and will do in A6."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#the-paper-13",
+    "href": "lectures/lecture_6.html#the-paper-13",
+    "title": "Bringing It All Together",
+    "section": "The Paper",
+    "text": "The Paper\nEarnings surprises\nWhy this test is particularly convincing\n\nUses local firm earnings surprises (not market-wide returns)\nIncludes daily fixed effects that absorb any common daily shock\nEarnings announcements are salient reports on past performance ⤏ should be unrelated to other daily news\nExploits the local bias of investors: people pay more attention to firms headquartered nearby\n\nResult\nPositive local earnings surprises are associated with:\n\nDecreased violent crime in high-income (investor) areas\nIncreased violent crime in low-income (noninvestor) areas\n\nSame contrasting pattern — even after removing all common daily variation."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#the-paper-14",
+    "href": "lectures/lecture_6.html#the-paper-14",
+    "title": "Bringing It All Together",
+    "section": "The Paper",
+    "text": "The Paper\nWhat makes this paper work?\n\n\n\n\n\n\n\n\n\nPaper element\nSkill/Tool\nYou learned this in\n\n\n\n\nThree data sources ⤏ merged panel\nData wrangling, merge, reshape\nL1\n\n\nSummary statistics, time series plots\nEDA, distributional analysis\nL2\n\n\nOLS regression, interpreting coefficients\nOLS, hypothesis testing\nL3\n\n\nAgency × year FE, agency × seasonal FE\nPanel fixed effects, TWFE\nL4\n\n\nLeads/lags analysis (event window logic)\nEvent study timing\nL5\n\n\nInteraction terms (return × income group)\nDifferential effects, DiD intuition\nL4\n\n\nClustered standard errors\nCorrect inference\nL3–L5\n\n\nRobustness to alternative specifications\nDefending identification\nL3–L5\n\n\n\n\n\n\n\n\n\n\nThe point\n\n\nYou have the entire toolkit to read, understand, and replicate this paper. That’s what you’ll do in Assignment 6."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#assignment-6-1",
+    "href": "lectures/lecture_6.html#assignment-6-1",
+    "title": "Bringing It All Together",
+    "section": "Assignment 6",
+    "text": "Assignment 6\nWhat stays, what changes?\n\n\nWhat stays the same\n\nThe research question and hypothesis\nThe empirical specification structure\nIncome terciles as investor proxy\nInteraction terms for differential effects\nFixed effects and robustness checks\n\n\nWhat changes\n\nCountry: Netherlands instead of US\nMarket: AEX index instead of S&P 500\nCrime data: CBS municipality data instead of FBI NIBRS\nFrequency: Monthly instead of daily\nGeography: Municipalities instead of cities\nIncome: CBS municipality median income instead of ACS\n\n\n\n\n\n\n\n\nImportant difference\n\n\nMonthly frequency is the biggest limitation. We cannot test Huck’s timing analysis (Table 4–5) or identify same-day effects. This is a key limitation you’ll discuss in Section 14."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#assignment-6-2",
+    "href": "lectures/lecture_6.html#assignment-6-2",
+    "title": "Bringing It All Together",
+    "section": "Assignment 6",
+    "text": "Assignment 6\nPart A: The data pipeline\n\n\nThree raw datasets\n\ncrime_data.dta: Municipality × month panel of crime incidents by type\nincome_data.dta: Cross-sectional average median income per municipality (2011–2018)\naex_daily.dta: Daily AEX index closing prices\n\n\nYour pipeline\n\nSection 2: Load and examine\nSection 3: Calculate standardized returns (trailing 252-day SD, then aggregate to monthly)\nSection 4: Reshape crime data (long ⤏ wide)\nSection 5: Merge all three datasets\nSection 6: Create analysis variables (terciles, interactions)\n\n\n\nRemember: Part A is 60–70% of the work. That’s normal."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#assignment-6-3",
+    "href": "lectures/lecture_6.html#assignment-6-3",
+    "title": "Bringing It All Together",
+    "section": "Assignment 6",
+    "text": "Assignment 6\nPart B: The analysis\nSection 7–8: Descriptive statistics & visualization\n\n\nBefore regressions, you create:\n\nSummary statistics by income tercile\nTime series of crime rates (trending down? seasonal patterns?)\nCrime rates overlaid with AEX returns\nCrime trends split by income group\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLink to L2\n\n\nThis is the “look before you regress” principle. Your descriptive statistics should reveal patterns that your regressions will formalize."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#assignment-6-4",
+    "href": "lectures/lecture_6.html#assignment-6-4",
+    "title": "Bringing It All Together",
+    "section": "Assignment 6",
+    "text": "Assignment 6\nBaseline panel regression (Section 9)\nThe baseline model estimates the average effect of AEX returns on crime across all municipalities:\n\\[\\text{Crime}_{it} = \\beta \\cdot r_t^{AEX} + \\alpha_i + \\varepsilon_{i,t}\\]\n\nMunicipality fixed effects (\\(\\alpha_i\\)) absorb time-invariant differences\nThis tests: “Do stock returns predict crime on average?”\nBut it does not test Huck’s key hypothesis about differential effects\n\n\n\nThis is the “warm-up” regression — like running a naive OLS before adding controls in L3."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#assignment-6-5",
+    "href": "lectures/lecture_6.html#assignment-6-5",
+    "title": "Bringing It All Together",
+    "section": "Assignment 6",
+    "text": "Assignment 6\nThe core test (Section 10)\n\nOur specification (with interactions)\n\\[\\text{Crime}_{it} = \\beta_0 + \\beta_1 \\text{Returns}_t + \\beta_2 (\\text{Returns}_t \\times \\text{High}_{i}) + \\beta_3 (\\text{Returns}_t \\times \\text{Low}_{i}) + \\alpha_i + \\varepsilon_{it}\\]\nWhere:\n\n\\(\\beta_1\\) = Effect in medium-income areas (reference group)\n\\(\\beta_1 + \\beta_2\\) = Effect in high-income areas\n\\(\\beta_1 + \\beta_3\\) = Effect in low-income areas\n\nKey test: Is \\(\\beta_2 &lt; 0\\) (high-income negative) and \\(\\beta_3 &gt; 0\\) (low-income positive)?"
+  },
+  {
+    "objectID": "lectures/lecture_6.html#assignment-6-6",
+    "href": "lectures/lecture_6.html#assignment-6-6",
+    "title": "Bringing It All Together",
+    "section": "Assignment 6",
+    "text": "Assignment 6\nTwo-way fixed effects & robustness (Section 11 & 12)\n\nTwo-way fixed effects (TWFE)\n\\[\\text{Crime}_{it} = \\beta_2 (\\text{Returns}_t \\times \\text{High}_{i}) + \\beta_3 (\\text{Returns}_t \\times \\text{Low}_{i}) + \\alpha_i + \\gamma_t + \\varepsilon_{it}\\]\nWhere:\n\n\\(\\alpha_i\\) = Municipality fixed effects\n\\(\\gamma_t\\) = Time (year-month) fixed effects\nNote: The main return effect \\(\\beta_1 \\text{Returns}_t\\) is absorbed by time FE because all municipalities have the same return in month \\(t\\)"
+  },
+  {
+    "objectID": "lectures/lecture_6.html#assignment-6-7",
+    "href": "lectures/lecture_6.html#assignment-6-7",
+    "title": "Bringing It All Together",
+    "section": "Assignment 6",
+    "text": "Assignment 6\nTwo-way fixed effects & robustness (Section 11 & 12)\nSection 12: Robustness checks\n\nLog crime: addresses skewed distribution\nAssault only: closer to Huck’s violent crime measure\nHigh-volatility months: does the effect strengthen when market moves are larger?"
+  },
+  {
+    "objectID": "lectures/lecture_6.html#section-14-interpreting-your-findings",
+    "href": "lectures/lecture_6.html#section-14-interpreting-your-findings",
+    "title": "Bringing It All Together",
+    "section": "Section 14: Interpreting Your Findings",
+    "text": "Section 14: Interpreting Your Findings\nWhat a good summary looks like\n\n\nStructure to follow\n\nMain result: Do you find differential effects?\nSigns: Consistent with Huck’s theory?\nStatistical significance: Are key coefficients significant?\nEconomic magnitude: How large are effects?\nRobustness: Do results hold across specifications?\nComparison to Huck: Same or different from US results?\n\n\nCommon mistakes to avoid\n🤦‍♀️ Just listing coefficients without interpretation\n🤦‍♀️ Over-claiming causality (“AEX returns cause crime”)\n🤦‍♀️ Ignoring null results (“we didn’t find it, so we won’t discuss it”)\n💰 Null results are informative! If you don’t find the same pattern, that’s a finding worth discussing."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#section-14-interpreting-your-findings-1",
+    "href": "lectures/lecture_6.html#section-14-interpreting-your-findings-1",
+    "title": "Bringing It All Together",
+    "section": "Section 14: Interpreting Your Findings",
+    "text": "Section 14: Interpreting Your Findings\nWhat if you don’t replicate Huck’s results?\nThink about why:\n\n\nData-related reasons\n\nMonthly ≠ daily: effects may wash out at lower frequency\nAEX is a smaller market with fewer household investors\nCBS crime data has different reporting standards than FBI NIBRS\n\n\nContext-related reasons\n\nDutch stock participation rate may differ from US\nWelfare state ⤏ less relative deprivation?\nCultural differences in violence as stress response\nNetherlands is geographically smaller ⤏ less local variation\n\n\n\n\n\n\n\n\nFor your thesis\n\n\nA well-explained null finding shows deeper understanding than a weak positive with no discussion."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#section-14-limitations",
+    "href": "lectures/lecture_6.html#section-14-limitations",
+    "title": "Bringing It All Together",
+    "section": "Section 14: Limitations",
+    "text": "Section 14: Limitations\nHow to write honest limitations\nThe formula: What ⤏ Why it matters ⤏ How it differs from Huck\n\n\nGood limitations\n“Monthly data cannot test within-day timing effects (Huck’s Table 4–5), limiting our ability to distinguish same-day from lagged effects.”\n“Municipality-level income is an imperfect proxy for investor participation; Huck uses census micro-data allowing for more precise classification.”\n“A single market return means no cross-sectional variation in ‘treatment’ within a given month — all municipalities face the same AEX return.”\n\nBad limitations\n“We don’t have enough data” ⤏ Too vague. What data? Why does it matter?\n“Results might be wrong” ⤏ Undermines everything without explaining what could be wrong.\n“The Netherlands is different from the US” ⤏ How is it different, and why does that affect your specific test?"
+  },
+  {
+    "objectID": "lectures/lecture_6.html#section-14-limitations-1",
+    "href": "lectures/lecture_6.html#section-14-limitations-1",
+    "title": "Bringing It All Together",
+    "section": "Section 14: Limitations",
+    "text": "Section 14: Limitations\nThe key limitations for Assignment 6\n\n\n\n\n\n\n\n\n\nLimitation\nConsequence\nvs. Huck\n\n\n\n\nMonthly frequency\nCannot identify contemporaneous effects; timing tests impossible\nHuck uses daily + hourly data\n\n\nSingle market return\nNo cross-sectional treatment variation within months\nHuck also has local earnings surprises\n\n\nEcological fallacy\nMunicipality income ≠ individual investor status\nSame issue, but Huck has finer geography\n\n\nStandard errors\nFew time periods (~96 months), spatial correlation\nHuck has ~6,000 trading days\n\n\nCrime reporting\nMeasurement varies by municipality and crime type\nNIBRS is standardized across agencies\n\n\nSelection/attrition\nMunicipality mergers change boundaries over time\nHuck filters for consistent reporters"
+  },
+  {
+    "objectID": "lectures/lecture_6.html#section-14-what-would-strengthen-the-analysis",
+    "href": "lectures/lecture_6.html#section-14-what-would-strengthen-the-analysis",
+    "title": "Bringing It All Together",
+    "section": "Section 14: What Would Strengthen the Analysis?",
+    "text": "Section 14: What Would Strengthen the Analysis?\nThink creatively\n\n\nBetter data\n\nDaily crime data (if available from CBS)\nIndividual brokerage account data by municipality (AFM, DEGIRO, or similar)\nSurvey data on stock market awareness by region\n\nNatural experiments\n\nNeo-broker entry: Trade Republic, BUX, DEGIRO expansion ⤏ DiD design\nTax policy changes affecting participation (e.g., box 3 reforms)\nCOVID market crash (extreme, salient event)\n\n\nAlternative outcomes\n\nHealth data (hospital admissions, mental health)\nGoogle Trends for financial distress keywords\nConsumer confidence by region\n\nExtensions\n\nCross-country comparison (UK has better crime data)\nCrypto markets (more volatile, younger investors, higher awareness)\nSocial media sentiment as mediator"
+  },
+  {
+    "objectID": "lectures/lecture_6.html#sections-1516-the-thesis-connection",
+    "href": "lectures/lecture_6.html#sections-1516-the-thesis-connection",
+    "title": "Bringing It All Together",
+    "section": "Sections 15–16: The Thesis Connection",
+    "text": "Sections 15–16: The Thesis Connection\nYou just completed a mini-thesis\n\n\nYour MSc thesis modules\n\nModule 1: Literature review & research question\nModule 2: Replication of published results with new/similar data\nModule 3: Extension or new analysis building on Module 2\n\n\nWhat you did in A6\n\nRead a published paper ⤏ Module 1\nReplicated the methodology with Dutch data ⤏ Module 2\nDiscussed extensions and improvements ⤏ Module 3 ideas\n\n\n\n\n\n\n\n\nThe direct connection\n\n\nAssignment 6 is Module 2. Your improvement suggestions in Section 14.3 are Module 3 ideas. The skills you practiced — data wrangling, panel regression, robustness, interpretation — are exactly what your thesis demands."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#the-role-of-ai-in-your-thesis-workflow",
+    "href": "lectures/lecture_6.html#the-role-of-ai-in-your-thesis-workflow",
+    "title": "Bringing It All Together",
+    "section": "The Role of AI in Your Thesis Workflow",
+    "text": "The Role of AI in Your Thesis Workflow\nYou need to understand the method to guide the tool\n\n\nWhat AI is good at\n\nWriting Stata/R/Python code from clear instructions\nDebugging syntax errors\nFormatting tables and figures\nSummarizing literature\n\n\nWhat AI cannot do for you\n\nChoose your identification strategy\nDecide which fixed effects to include and why\nInterpret a null result\nWrite an honest limitations discussion\nDefend your choices in a thesis defense\n\n\n\n“If you can’t explain why you’re including municipality fixed effects, the LLM can’t save you in your thesis defense.”\n\n\n\n\n\n\n\nThe value chain\n\n\nUnderstanding ⤏ Design ⤏ Implementation. AI helps most with the last step, least with the first. This course focused on the first two — because those are what make you a researcher, not a code typist."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#what-you-can-now-do",
+    "href": "lectures/lecture_6.html#what-you-can-now-do",
+    "title": "Bringing It All Together",
+    "section": "What You Can Now Do",
+    "text": "What You Can Now Do\nThe skills you built\n\n\nTechnical skills\n\nBuild a data pipeline from raw sources to analysis-ready panels\nRun and interpret OLS, panel FE, DiD, event studies, and Fama–MacBeth regressions\nCreate publication-quality tables and figures\nConduct and explain robustness checks\n\n\nResearch skills\n\nRead and critically evaluate an empirical finance paper\nChoose methods appropriate to your research question and data\nIdentify threats to identification and address them\nWrite honest interpretation and limitation discussions\nReplicate published work and evaluate generalizability"
+  },
+  {
+    "objectID": "lectures/lecture_6.html#practical-thesis-advice",
+    "href": "lectures/lecture_6.html#practical-thesis-advice",
+    "title": "Bringing It All Together",
+    "section": "Practical Thesis Advice",
+    "text": "Practical Thesis Advice\nThree things to remember\n1. Start with the data, not the regression\nIf you can’t describe your data structure, you’re not ready to estimate anything. Invest time in Part A.\n2. Replicate before you extend\nGet the baseline working before you try new specifications. Confirm that your data pipeline produces sensible numbers.\n3. Limitations aren’t weakness — they’re depth\nEvery published paper has limitations. Acknowledging them shows you understand the research design. Not acknowledging them suggests you don’t."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#final-assignment-reminders",
+    "href": "lectures/lecture_6.html#final-assignment-reminders",
+    "title": "Bringing It All Together",
+    "section": "Final Assignment Reminders",
+    "text": "Final Assignment Reminders\nA6 practical details\n\nDeadline: March 25, 2026\nStructure: Part A (data prep) ⤏ Part B (analysis) ⤏ Part C (interpretation)\nGrading: (Auto-)graded through Section 13; Sections 14–16 are ungraded - “Food for thought”"
+  },
+  {
+    "objectID": "lectures/lecture_6.html#sections-15-to-16-the-thesis-connection",
+    "href": "lectures/lecture_6.html#sections-15-to-16-the-thesis-connection",
+    "title": "Bringing It All Together",
+    "section": "Sections 15 to 16: The Thesis Connection",
+    "text": "Sections 15 to 16: The Thesis Connection\nYou just completed a mini-thesis\n\n\nYour MSc thesis modules\n\nModule 1: Literature review & research question\nModule 2: Replication of published results with new/similar data\nModule 3: Extension or new analysis building on Module 2\n\n\nWhat you did in A6\n\nRead a published paper ⤏ Module 1\nReplicated the methodology with Dutch data ⤏ Module 2\nDiscussed extensions and improvements ⤏ Module 3 ideas\n\n\n\n\n\n\n\n\nThe direct connection\n\n\nAssignment 6 is Module 2. Your improvement suggestions in Section 14.3 are Module 3 ideas. The skills you practiced — data wrangling, panel regression, robustness, interpretation — are exactly what your thesis demands."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#lecture-4-panel-data-methods-1",
+    "href": "lectures/lecture_6.html#lecture-4-panel-data-methods-1",
+    "title": "Bringing It All Together",
+    "section": "Lecture 4: Panel Data Methods",
+    "text": "Lecture 4: Panel Data Methods\nControl for what you can’t measure\n\n\nKey takeaways\n\nPanel data: multiple units observed over time\nFixed effects absorb unobserved heterogeneity\n\nEntity FE: time-invariant characteristics\nTime FE: common shocks across units\n\nDifference-in-Differences: treatment vs control, before vs after\nParallel trends assumption as the key identification requirement\n\n\nKey picture\n\n\n\n\n\n\n\n\n\n\n\n\nThe intuition\n\n\nIf you can’t run an experiment and can’t observe all confounders, panel methods let you difference them out."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#lecture-5-event-studies-famamacbeth-1",
+    "href": "lectures/lecture_6.html#lecture-5-event-studies-famamacbeth-1",
+    "title": "Bringing It All Together",
+    "section": "Lecture 5: Event Studies & Fama–MacBeth",
+    "text": "Lecture 5: Event Studies & Fama–MacBeth\nSpecialized tools for finance\n\n\nEvent Studies\n\nShort-window test of market reactions\nEstimation window ⤏ expected return model ⤏ abnormal returns ⤏ CARs\nThe “counterfactual” is the factor model prediction\nSame logic as DiD, but at daily frequency\nLeads and lags reveal timing of information incorporation\n\n\nFama–MacBeth\n\nTwo-step procedure for cross-sectional pricing tests\nStep 1: Cross-sectional regression each period\nStep 2: Time-series average of coefficients\nHandles cross-sectional correlation by construction\nThe standard approach for testing factor premia"
+  },
+  {
+    "objectID": "lectures/lecture_6.html#the-empirical-researchers-toolkit-1",
+    "href": "lectures/lecture_6.html#the-empirical-researchers-toolkit-1",
+    "title": "Bringing It All Together",
+    "section": "The Empirical Researcher’s Toolkit",
+    "text": "The Empirical Researcher’s Toolkit\nThe complete methods toolkit\n\n\n\n\n\n\n\n\n\n\n\nLecture\nMethod\nIdentifies\nData structure\nKey assumption\n\n\n\n\nL3\nOLS + controls\nCross-sectional relationships\nCross-section\nNo omitted variables\n\n\nL4\nDiD / Panel FE\nCausal effect of treatment\nPanel\nParallel trends\n\n\nL5\nEvent study\nMarket reaction to specific events\nDaily panel\nMarket efficiency + correct factor model\n\n\nL5\nFama–MacBeth\nSystematic return predictability\nRepeated cross-sections\nCross-sections are independent draws\n\n\n\n\n\n\n\n\n\n\nKey insight\n\n\nThe art of empirical finance is choosing the method whose assumptions are most credible for your specific research question and data."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#synthesis-the-empirical-researchers-toolkit",
+    "href": "lectures/lecture_6.html#synthesis-the-empirical-researchers-toolkit",
+    "title": "Bringing It All Together",
+    "section": "Synthesis## The Empirical Researcher’s Toolkit",
+    "text": "Synthesis## The Empirical Researcher’s Toolkit\nStandard errors: A unifying thread\nThe standard error story has been building across the course:\n\nL3: Heteroskedasticity-robust SE → solves non-constant variance\nL4: Cluster-robust SE → handles within-group correlation (Moulton problem)\nL5: Fama–MacBeth SE → handles cross-sectional correlation of residuals\n\nAll three address the same fundamental issue: when residuals are not independent, naive standard errors are too small. The solution is always to match the inference method to the correlation structure of the data.\n\n\n\n\n\n\nThe common thread\n\n\nThe choice of standard error is not a technicality, it is a statement about what you believe is independent in your data. Getting it wrong can flip your conclusions from significant to insignificant (or vice versa)."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#the-empirical-researchers-toolkit-2",
+    "href": "lectures/lecture_6.html#the-empirical-researchers-toolkit-2",
+    "title": "Bringing It All Together",
+    "section": "The Empirical Researcher’s Toolkit",
+    "text": "The Empirical Researcher’s Toolkit\nStandard errors: A unifying thread\nThe standard error story has been building across the course:\n\nL3: Heteroskedasticity-robust SE → solves non-constant variance\nL4: Cluster-robust SE → handles within-group correlation (Moulton problem)\nL5: Fama–MacBeth SE → handles cross-sectional correlation of residuals\n\nAll three address the same fundamental issue: when residuals are not independent, naive standard errors are too small. The solution is always to match the inference method to the correlation structure of the data.\n\n\n\n\n\n\nThe common thread\n\n\nThe choice of standard error is not a technicality, it is a statement about what you believe is independent in your data. Getting it wrong can flip your conclusions from significant to insignificant (or vice versa)."
+  },
+  {
+    "objectID": "lectures/lecture_6.html#assignment-6-8",
+    "href": "lectures/lecture_6.html#assignment-6-8",
+    "title": "Bringing It All Together",
+    "section": "Assignment 6",
+    "text": "Assignment 6\nThe publication-quality table (Section 13)\nSection 13 asks you to create a single table combining all specifications:\n\n\n\n\n\n\n\nLink to L3: This is the same skill as the DiLLMa regression table — building up from naive to fully specified, each column addressing a new concern."
   }
 ]
